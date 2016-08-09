@@ -38,4 +38,11 @@ router.route('/spotemon/close').get(function(req, res){ //Get close spotemon
 	res.json(spotemon.getCloseSpotemon(exampleUser));
 })
 
+router.route('/me/spotemon').get(function(req, res){ //Get close spotemon
+	res.json(user.getSpotemon());
+})
+router.route('/me/stats').get(function(req, res){ //Get close spotemon
+	res.json(user.getStats());
+})
+
 module.exports = router;
