@@ -8,9 +8,7 @@ export default class App extends Component {
     return (
 		<div>
 			<Menu />
-			<div id="popups">
-				<Challange />
-			</div>
+			<Challange />
 		   {this.props.children}
 	   	</div>
     );
