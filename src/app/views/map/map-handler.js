@@ -45,6 +45,12 @@ export default class MapHandler extends Component {
                         // Start battle
                         console.log(user)
                     });
+                    user.marker.setIcon({
+                        url: require('../../assets/images/opponent.png'),
+                        scaledSize: new google.maps.Size(52, 52),
+                        origin: new google.maps.Point(0,0),
+                        anchor: new google.maps.Point(0, 0)
+                    });
                     user.marker.setMap(this.map);
                 } else {
                     user.marker.setPosition(position);
@@ -67,6 +73,12 @@ export default class MapHandler extends Component {
                         // Start battle
                         console.log(spotemon)
                     });
+                    spotemon.marker.setIcon({
+                        url: require('../../assets/images/artist.png'),
+                        scaledSize: new google.maps.Size(52, 52),
+                        origin: new google.maps.Point(0,0),
+                        anchor: new google.maps.Point(0, 0)
+                    });
                     spotemon.marker.setMap(this.map);
                 } else {
                     spotemon.marker.setPosition(position);
@@ -85,6 +97,12 @@ export default class MapHandler extends Component {
     saveMarker(ref) {
         if (ref && typeof ref.getEntity === 'function') {
             this.marker = ref.getEntity();
+            this.marker.setIcon({
+                url: require('../../assets/images/position.png'),
+                scaledSize: new google.maps.Size(43, 64),
+                origin: new google.maps.Point(0,0),
+                anchor: new google.maps.Point(0, 0)
+            });
         }
     }
 
