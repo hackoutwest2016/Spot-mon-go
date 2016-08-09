@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+
+import MapHandler from './map-handler';
 import Menu from '../../components/menu';
 
 export default class Map extends Component {
   	render() {
     	return (
 			<div>
-				<div>Map</div>
+				<MapHandler />
 				<Menu />
 			</div>
 	    );
