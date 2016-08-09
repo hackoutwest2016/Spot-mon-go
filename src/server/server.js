@@ -14,6 +14,10 @@ var app        	= express();                 // define our app using express
 //var db 			= require('./db');
 //db.connect();
 
+// INITIALIZE SERVER STATE
+// ==========================================================================
+require('./models/state');
+
 // ROUTES FOR OUR API
 // ==========================================================================
 var router 		= require('./controllers/index')
@@ -23,10 +27,6 @@ var update 		= require('./modules/auto-update/index')
 // REGISTER OUR ROUTES -------------------------------
 app.use('/', router);
 app.use('/api', api);
-
-// INITIALIZE SERVER STATE
-// ==========================================================================
-require('./models/state');
 
 // START THE SERVER
 // ==========================================================================

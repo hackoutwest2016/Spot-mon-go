@@ -1,7 +1,7 @@
 const users = require('../../models/users');
 const spotemon = require('../../models/spotemon');
 
-//setTimeout(generateSpotemon);
+generateSpotemon();
 
 function generateSpotemon(userIndex = 0) {
     let userList = users.getAllUsers();
@@ -11,10 +11,20 @@ function generateSpotemon(userIndex = 0) {
     }
     setTimeout(() => {
         generateSpotemon(userIndex + 1);
-    }, 10000);
+    }, 30000);
 }
 
 function generateSpotemonAtCoordinates(coordinates) {
     let spotemonList = spotemon.getAllSpotemon();
+    let spotemonIndex = Math.floor(Math.random()*state.existingSpotemon.length);
+    let newSpotemon = {
+        id: new Date().getTime(),
+        spotifyId: state.existingSpotemon[spotemonIndex],
+        coords: coordinates
+    }
+    setTimeout(() => {
+        spotemon.removeSpotemon(newSpotemon);
+    }, 120000);
+    spotemon.addSpotemon(newSpotemon);
 }
 
