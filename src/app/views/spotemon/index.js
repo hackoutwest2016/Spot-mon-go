@@ -9,8 +9,8 @@ export default class Spotemon extends Component {
 
     			<img src = {this.state.image} alt = "Artist Icon" /> 
 			    <div id="results">
-			    	<p>Carisma Points: {this.state.initialized ? this.state.carismaPoints : 'Laddar'}</p>
-			    	<p>{this.state.initialized ? this.state.artistName : 'Laddar'}</p>
+			    	<p>Carisma Points: {this.state.initialized ? this.state.carismaPoints : 'Loading'}</p>
+			    	<p>{this.state.initialized ? this.state.artistName : 'Loading'}</p>
 
 			    </div>
 			</div>
