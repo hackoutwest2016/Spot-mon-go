@@ -27,7 +27,11 @@ module.exports = {
 				test: /\.js$/,
 				loaders: ['react-hot', 'babel'],
 				include: path.join(__dirname, 'src/app')
-			}
+			},
+			{
+		    	test: /\.(png|jpg|)$/,
+		    	loader: 'url-loader?limit=200000'
+		    }
 		]
 	}
 };
