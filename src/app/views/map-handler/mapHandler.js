@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
+import { MapStyles } from './mapStyles';
 import $ from 'jquery';
 
 const coords = {
@@ -34,11 +35,11 @@ export default class MapHandler extends Component {
         $.get('api/users/all', users => {
             users.forEach(userJSON => {
                 let position = userJSON.coords;
-                console.log(position)
                 let user = this.users[userJSON.id];
                 if (!user) {
                     user = this.users[userJSON.id] = userJSON;
                     user.marker = new google.maps.Marker({ position });
+                    user.marker.setMap(this.map);
                 } else {
                     user.marker.setPosition(position);
                 }
@@ -68,10 +69,11 @@ export default class MapHandler extends Component {
                 streetViewControl={false}
                 zoomControl={false}
                 draggable={false}
-                zoom={17}
-                maxZoom={17}
-                minZoom={17}
+                zoom={18}
+                maxZoom={18}
+                minZoom={18}
                 clickableIcons={false}
+                styles={MapStyles}
                 onMapCreated={this.onMapCreated.bind(this)}
             >
                 <Marker
