@@ -1,0 +1,17 @@
+html {
+    height: 100%;
+
+    body {
+        margin: 0;
+        height: inherit;
+
+        div#root {
+            height: inherit;
+
+            > div {
+                height: inherit;
+            }
+        }
+    }
+}
+

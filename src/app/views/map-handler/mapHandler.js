@@ -11,13 +11,17 @@ export default class MapHandler extends Component {
         return (
             <Gmaps
                 width={'100%'}
-                height={'600px'}
+                height={'100%'}
                 lat={coords.lat}
                 lng={coords.lng}
                 mapTypeControl={false}
                 streetViewControl={false}
                 zoomControl={false}
-                zoom={16}
+                zoom={19}
+                draggable={false}
+                maxZoom={19}
+                minZoom={19}
+                clickableIcons={false}
             >
                 <Marker
                     lat={coords.lat}
