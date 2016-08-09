@@ -18,6 +18,7 @@ var app        	= express();                 // define our app using express
 // ==========================================================================
 var router 		= require('./controllers/index')
 var api 		= require('./controllers/api/index')
+var update 		= require('./modules/auto-update/index')
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/', router);
