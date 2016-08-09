@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import MapHandler from './mapHandler';
 
 export default class App extends Component {
-  render() {
-    return (
-      <h1>Hello, world</h1>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <MapHandler />
+            </div>
+        );
+    }
 }
