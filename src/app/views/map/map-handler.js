@@ -67,6 +67,7 @@ export default class MapHandler extends Component {
                 let position = spotemonJSON.coords;
                 let spotemon = this.spotemon[spotemonJSON.id];
                 if (!spotemon) {
+                    console.log(position)
                     spotemon = this.spotemon[spotemonJSON.id] = spotemonJSON;
                     spotemon.marker = new google.maps.Marker({ position });
                     spotemon.marker.addListener('click', () => {
