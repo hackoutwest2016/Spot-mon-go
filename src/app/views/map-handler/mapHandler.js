@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
+import $ from 'jquery';
 
 const coords = {
     lat: 57.704167,
@@ -18,13 +19,35 @@ export default class MapHandler extends Component {
                 ({coords}) => this.updatePosition(coords),
                 console.error.bind(console),
                 options);
+
+        this.users = {};
+        setInterval(this.getOtherPlayers.bind(this), 5000);
     }
 
     updatePosition({latitude, longitude}) {
-        this.marker.setPosition({lat: latitude, lng: longitude});
+        let position = {lat: latitude, lng: longitude};
+        this.marker.setPosition(position);
+        this.map.setCenter(position);
+    }
+
+    getOtherPlayers() {
+        $.get('api/users/all', users => {
+            users.forEach(userJSON => {
+                let position = userJSON.coords;
+                console.log(position)
+                let user = this.users[userJSON.id];
+                if (!user) {
+                    user = this.users[userJSON.id] = userJSON;
+                    user.marker = new google.maps.Marker({ position });
+                } else {
+                    user.marker.setPosition(position);
+                }
+            });
+        })
     }
 
     onMapCreated(map) {
+        this.map = map;
         map.setOptions({
             disableDefaultUI: true
         });
@@ -44,18 +67,18 @@ export default class MapHandler extends Component {
                 mapTypeControl={false}
                 streetViewControl={false}
                 zoomControl={false}
-                zoom={19}
                 draggable={false}
-                maxZoom={19}
-                minZoom={19}
+                zoom={17}
+                maxZoom={17}
+                minZoom={17}
                 clickableIcons={false}
-                onMapCreated={this.onMapCreated}
+                onMapCreated={this.onMapCreated.bind(this)}
             >
                 <Marker
                     ref={this.saveMarker.bind(this)}
                 />
             </Gmaps>
-            );
+        );
     }
 }
 
