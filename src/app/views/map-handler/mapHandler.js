@@ -14,8 +14,10 @@ export default class MapHandler extends Component {
                 height={'600px'}
                 lat={coords.lat}
                 lng={coords.lng}
+                mapTypeControl={false}
+                streetViewControl={false}
+                zoomControl={false}
                 zoom={16}
-                params={{v: '3.exp'}}
             >
                 <Marker
                     lat={coords.lat}
