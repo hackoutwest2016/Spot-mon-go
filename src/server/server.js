@@ -9,6 +9,8 @@ var path 		= require('path');
 var express    	= require('express');        // call express
 var app        	= express();                 // define our app using express
 
+var bodyParser = require('body-parser');
+
 // DATABASE SETTINGS AND CONNECTION
 // ==========================================================================
 //var db 			= require('./db');
@@ -18,11 +20,15 @@ var app        	= express();                 // define our app using express
 // ==========================================================================
 require('./models/state');
 
+// BODY PARSER -------------------------------
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
 // ROUTES FOR OUR API
 // ==========================================================================
-var router 		= require('./controllers/index')
-var api 		= require('./controllers/api/index')
-var update 		= require('./modules/auto-update/index')
+var router 		= require('./controllers/index');
+var api 		= require('./controllers/api/index');
+var update 		= require('./modules/auto-update/index');
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/', router);

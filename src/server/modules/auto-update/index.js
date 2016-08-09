@@ -6,12 +6,16 @@ generateSpotemon();
 function generateSpotemon(userIndex = 0) {
     let userList = users.getAllUsers();
     if (userList.length) {
-        let user = userList[userIndex % userList.length];
-        generateSpotemonAtCoordinates(user.coords);
+        let coords = userList[userIndex % userList.length].coords;
+		coords.lat = coords.lat + (2*Math.random() - 1)*0.0002;
+		coords.lng = coords.lng + (2*Math.random() - 1)*0.0002;
+
+        generateSpotemonAtCoordinates(coords);
     }
     setTimeout(() => {
         generateSpotemon(userIndex + 1);
-    }, 30000);
+    }, 1000);
+	// }, 30000);
 }
 
 function generateSpotemonAtCoordinates(coordinates) {
@@ -21,10 +25,9 @@ function generateSpotemonAtCoordinates(coordinates) {
         id: new Date().getTime(),
         spotifyId: state.existingSpotemon[spotemonIndex],
         coords: coordinates
-    }
+    };
     setTimeout(() => {
         spotemon.removeSpotemon(newSpotemon);
     }, 120000);
     spotemon.addSpotemon(newSpotemon);
 }
-
