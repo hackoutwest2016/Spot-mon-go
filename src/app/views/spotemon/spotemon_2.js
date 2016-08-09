@@ -33,6 +33,17 @@ function getArtistTopTracks(artistId, callback){
 		}
 	});
 }
+function getSongToPlay(trackId, callback){
+	$.ajax({
+		url: 'https://api.spotify.com/v1/tracks/' + trackId,
+		success: function (response) {
+			callback(response);
+		},
+		error: function (response) {
+			callback(response);
+		}
+	})
+}
 
 module.exports = {
 	getArtistPopularity,

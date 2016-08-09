@@ -7,6 +7,7 @@ export default class Spotemon extends Component {
     	return (
     		<div>
 
+
     			<img src = {this.state.image} alt = "Artist Icon" height="42" width="42"/> 
 			    <div id="results">
 			    	<p>Carisma Points: {this.state.initialized ? this.state.carismaPoints : 'Laddar'}</p>
@@ -28,12 +29,14 @@ export default class Spotemon extends Component {
 			topTrack: '',
 			carismaPoints: 0,
 			image: null
-
 		}
+		
 
 		spot.getArtistTopTracks('3H7Ez7cwaYw4L3ELy4v3Lc',function (response) {
 			spot.getTrackToPlay(response.tracks[1].id, function(response){
 				self.setState(Object.assign({}, self.state, {artistName: response.artists[0].name, initialized:true, topTrack: response.name}));
+				var audio = new Audio (response.preview_url);
+				audio.play();
 			})
 		})
 
