@@ -67,6 +67,7 @@ export default class MapHandler extends Component {
                 let position = spotemonJSON.coords;
                 let spotemon = this.spotemon[spotemonJSON.id];
                 if (!spotemon) {
+                    console.log(position)
                     spotemon = this.spotemon[spotemonJSON.id] = spotemonJSON;
                     spotemon.marker = new google.maps.Marker({ position });
                     spotemon.marker.addListener('click', () => {
@@ -109,7 +110,7 @@ export default class MapHandler extends Component {
         return (
             <Gmaps
                 width={'100%'}
-                height={'100%'}
+                height={'calc(100% + 23px)'}
                 lat={coords.lat}
                 lng={coords.lng}
                 mapTypeControl={false}
@@ -130,3 +131,4 @@ export default class MapHandler extends Component {
         );
     }
 }
+
