@@ -42,8 +42,13 @@ export default class MapHandler extends Component {
                     user = this.users[userJSON.id] = userJSON;
                     user.marker = new google.maps.Marker({ position });
                     user.marker.addListener('click', () => {
-                        // Start battle
-                        console.log(user)
+                        browserHistory.push('battle')
+                    });
+                    user.marker.setIcon({
+                        url: require('../../assets/images/opponent.png'),
+                        scaledSize: new google.maps.Size(52, 52),
+                        origin: new google.maps.Point(0,0),
+                        anchor: new google.maps.Point(0, 0)
                     });
                     user.marker.setMap(this.map);
                 } else {
@@ -64,8 +69,13 @@ export default class MapHandler extends Component {
                     spotemon = this.spotemon[spotemonJSON.id] = spotemonJSON;
                     spotemon.marker = new google.maps.Marker({ position });
                     spotemon.marker.addListener('click', () => {
-                        // Start battle
-                        console.log(spotemon)
+                        browserHistory.push('catch')
+                    });
+                    spotemon.marker.setIcon({
+                        url: require('../../assets/images/artist.png'),
+                        scaledSize: new google.maps.Size(52, 52),
+                        origin: new google.maps.Point(0,0),
+                        anchor: new google.maps.Point(0, 0)
                     });
                     spotemon.marker.setMap(this.map);
                 } else {
@@ -85,6 +95,12 @@ export default class MapHandler extends Component {
     saveMarker(ref) {
         if (ref && typeof ref.getEntity === 'function') {
             this.marker = ref.getEntity();
+            this.marker.setIcon({
+                url: require('../../assets/images/position.png'),
+                scaledSize: new google.maps.Size(43, 64),
+                origin: new google.maps.Point(0,0),
+                anchor: new google.maps.Point(0, 0)
+            });
         }
     }
 
