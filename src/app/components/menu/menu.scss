@@ -15,7 +15,6 @@
 }
 
 .menu-image {
-	border: 2px solid green;
 	border-radius: 50%;
 
 	transition: box-shadow 0.2s;
@@ -31,11 +30,11 @@
 	text-align:center;
 }
 .bottom-menu-item-container:not(#main-menu-btn){
-	padding-top:10px;
+	padding-top:20px;
 
 	.menu-image{
-		width:60px;
-		height:60px;
+		width:40px;
+		height:40px;
 	}
 }
 .bottom-menu-image{
@@ -65,8 +64,8 @@
 .folded-menu-image {
 	position:absolute;
 
-	width:50px;
-	height:50px;
+	width:40px;
+	height:40px;
 }
 
 #spotedex-btn{
@@ -78,10 +77,10 @@
 	right:20%;
 }
 #menu-exit-btn{
-	width:40px;
-	height:40px;
+	width:30px;
+	height:30px;
 
-	bottom:15px;
+	bottom:30px;
 	left:50%;
 
 	margin-left:-20px;
