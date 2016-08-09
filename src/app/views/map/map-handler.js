@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 import { MapStyles } from './mapStyles';
+import { browserHistory } from 'react-router';
 import $ from 'jquery';
 
 const coords = {
