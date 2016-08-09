@@ -10,7 +10,7 @@ export default class MapHandler extends Component {
     render() {
         return (
             <Gmaps
-                width={'800px'}
+                width={'100%'}
                 height={'600px'}
                 lat={coords.lat}
                 lng={coords.lng}

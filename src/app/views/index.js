@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MapHandler from './mapHandler';
+import MapHandler from './map-handler/mapHandler';
 
 export default class App extends Component {
     render() {
