@@ -23,17 +23,7 @@ if(!global.state){
 				}
 			}
 		],
-		"spotemon": [
-			{
-				id: 0,
-				name: "Håkan Hellström",
-				cp: 100,
-				coords: {
-					lat: 57.703970,
-					lng: 11.96590
-				}
-			}
-		],
+		"spotemon": [],
         "existingSpotemon": [
             "1uNFoZAHBGtllmzznpCI3s",
             "3TVXtAsR1Inumwj472S9r4",
