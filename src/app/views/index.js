@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Router, Route, Link, browserHistory} from 'react-router';
 
-import Menu from '../components/menu/index';
+import Menu from '../components/menu';
+import Challange from '../components/challange';
 
 import Map from '../views/map/index';
 import MySpotemon from '../views/my-spotemon/index';
