@@ -9,8 +9,8 @@ const exampleUser = {
 	alias: "example",
 	name: "Example",
 	coords: {
-		"x": 57.703940,
-		"y": 11.96560
+		"lat": 57.703940,
+		"lng": 11.96560
 	}
 }
 
