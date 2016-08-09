@@ -7,6 +7,33 @@ const coords = {
 };
 
 export default class MapHandler extends Component {
+    constructor() {
+        super();
+
+        let options = {
+            maximumAge: 0,
+            enableHighAccuracy: true
+        };
+        navigator.geolocation.watchPosition(
+                ({coords}) => this.updatePosition(coords),
+                console.error.bind(console),
+                options);
+    }
+
+    updatePosition({latitude, longitude}) {
+        this.marker.setPosition({lat: latitude, lng: longitude});
+    }
+
+    onMapCreated(map) {
+        map.setOptions({
+            disableDefaultUI: true
+        });
+    }
+
+    saveMarker(ref) {
+        this.marker = ref.getEntity();
+    }
+
     render() {
         return (
             <Gmaps
@@ -22,10 +49,10 @@ export default class MapHandler extends Component {
                 maxZoom={19}
                 minZoom={19}
                 clickableIcons={false}
+                onMapCreated={this.onMapCreated}
             >
                 <Marker
-                    lat={coords.lat}
-                    lng={coords.lng}
+                    ref={this.saveMarker.bind(this)}
                 />
             </Gmaps>
             );
