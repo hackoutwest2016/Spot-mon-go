@@ -1,0 +1,78 @@
+$hel: Helvetica, sans-serif;
+$helLight: "HelveticaNeue-Light", sans-serif;
+$helMed:"HelveticaNeue-Medium", sans-serif;
+$green: #1ed760;
+$dark-grey: #555555;
+$light-grey: #BEBEBE;
+$yellow: #f6e900;
+
+html{
+  font-family: $hel;
+  margin:0;
+  padding:0;
+}
+.wrapper{background-color: $dark-grey}
+
+body {
+	color: rgb(55,55,55);
+	font: 100% Helvetica, sans-serif;
+}
+
+div#spotemon {
+	h4, p {
+		display: inline;
+		text-align: left;
+	
+	}
+	.cp-text{
+		font-family: $helLight;
+		letter-spacing: 1px;
+		font-weight: 100;
+		color: $yellow;
+		font-size: 20pt;
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 63pt;
+	}
+	.cp-points{
+		color: $light-grey;
+		font-size: 30pt;
+		display: inline-block;
+		text-align: center;
+		vertical-align: middle;
+	    margin-left: 5pt;
+		
+
+	}
+	.name{
+    font-family: $helMed;
+    color: $green;
+    font-weight: 50;
+    font-size: 15pt;
+    display: inline-block;
+    margin-left: 25pt;
+  	}
+  	.nameId{
+  		font-family: $helMed;
+	    color: $dark-grey;
+	    font-weight: 50;
+	    font-size: 15pt;
+	    display: inline-block;
+	    margin-left: 5pt;
+  	}
+  	img {
+		border-radius:50%;
+		width: 25vh;
+		height: auto;
+		margin-left: 46pt;
+		position: relative;
+		top: -30px;
+
+	}
+
+	div#container{
+		margin: 20px;
+		width: 250px;
+		height: 50px;
+	}
+}
