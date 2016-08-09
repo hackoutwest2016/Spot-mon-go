@@ -109,7 +109,7 @@ export default class MapHandler extends Component {
         return (
             <Gmaps
                 width={'100%'}
-                height={'100%'}
+                height={'calc(100% + 23px)'}
                 lat={coords.lat}
                 lng={coords.lng}
                 mapTypeControl={false}
