@@ -9,8 +9,8 @@ if(!global.state){
 				"alias": "kalle",
 				"name": "Kalle",
 				"coords": {
-					"x": 57.703973,
-					"y": 11.96597
+					"lat": 57.703973,
+					"lng": 11.96597
 				}
 			},
 			{
@@ -18,8 +18,8 @@ if(!global.state){
 				"alias": "oskar",
 				"name": "Oskar",
 				"coords": {
-					"x": 57.703970,
-					"y": 11.96590
+					"lat": 57.703970,
+					"lng": 11.96590
 				}
 			}
 		],
@@ -29,8 +29,8 @@ if(!global.state){
 				name: "Håkan Hellström",
 				cm: 100,
 				coords: {
-					x: 57.703970,
-					y: 11.96590
+					lat: 57.703970,
+					lng: 11.96590
 				}
 			}
 		],

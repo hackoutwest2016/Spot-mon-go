@@ -3,10 +3,10 @@ function rad (x) {
 };
 
 function getDistance (u1, u2) {
-	let u1_x = u1.coords.x,
-		u1_y = u1.coords.y,
-		u2_x = u2.coords.x,
-		u2_y = u2.coords.y;
+	let u1_x = u1.coords.lat,
+		u1_y = u1.coords.lng,
+		u2_x = u2.coords.lat,
+		u2_y = u2.coords.lng;
 
 	var R = 6378137; // Earth’s mean radius in meter
 	var dLat = rad(u2_x - u1_x);
