@@ -1,5 +1,6 @@
 #menu {
 	text-align:center;
+	z-index:50;
 }
 
 #bottom-menu{
@@ -9,6 +10,8 @@
 
 	height:90px;
 	width:100%;
+
+	z-index:50;
 }
 #menu.open #bottom-menu{
 	display:none;
@@ -30,11 +33,11 @@
 	text-align:center;
 }
 .bottom-menu-item-container:not(#main-menu-btn){
-	padding-top:20px;
+	padding-top:5px;
 
 	.menu-image{
-		width:40px;
-		height:40px;
+		width:50px;
+		height:50px;
 	}
 }
 .bottom-menu-image{
@@ -52,13 +55,13 @@
 	bottom:0;
 	left:0;
 
-	background-color: rgba(128,255,128, 0.3);
-
 	width:100%;
 
 	opacity:0;
 
 	transition: opacity 0.2s;
+
+	z-index:50;
 }
 
 .folded-menu-image {
@@ -70,11 +73,11 @@
 
 #spotedex-btn{
 	bottom:80px;
-	left:20%;;
+	left:30%;;
 }
 #spotemon-btn{
 	bottom:80px;
-	right:20%;
+	right:30%;
 }
 #menu-exit-btn{
 	width:30px;
@@ -83,5 +86,5 @@
 	bottom:30px;
 	left:50%;
 
-	margin-left:-20px;
+	margin-left:-15px;
 }
