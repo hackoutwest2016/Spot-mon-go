@@ -21,7 +21,7 @@ export default class App extends Component {
 			<Route path="/" component={Map} />
 			<Route path="my-spotemon" component={MySpotemon} />
 			<Route path="spotemon" component={AllSpotemon} />
-			<Route path="spotemon/:spotemodId" component={Spotemon} />
+			<Route path="spotemon/:spotemonId" component={Spotemon} />
 			<Route path="user" component={User} />
 			<Route path="spotedex" component={Spotedex} />
 			<Route path="battle" component={Battle} />
