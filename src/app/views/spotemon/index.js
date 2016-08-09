@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import spot from './spotemon_2';
+import style from './spotemon.scss';
 
 export default class Spotemon extends Component {
   	render() {
     	return (
-    		<div>
-
+    		<div id="spotemon">
+			    <h3>CP: {this.state.initialized ? this.state.carismaPoints : 'Loading'}</h3>
     			<img src = {this.state.image} alt = "Artist Icon" /> 
 			    <div id="results">
-			    	<p>Carisma Points: {this.state.initialized ? this.state.carismaPoints : 'Loading'}</p>
+			    	<h4>Name:</h4>
 			    	<p>{this.state.initialized ? this.state.artistName : 'Loading'}</p>
-
 			    </div>
 			</div>
 	    );
@@ -34,7 +34,6 @@ export default class Spotemon extends Component {
 		self.setState(Object.assign({}, self.state, {artistId: artistId}));
 
 		var audio = new Audio();
-		console.log(this.state);
 
 		spot.getArtistTopTracks(artistId,function (response) {
 			spot.getTrackToPlay(response.tracks[1].id, function(response){
