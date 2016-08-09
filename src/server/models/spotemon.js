@@ -17,12 +17,13 @@ function getCloseSpotemon(user) {
 	return closeSpotemon;
 }
 
-function addSpotemon () {
-	
+function addSpotemon(spotemon) {
+    state.spotemon.push(spotemon);
 }
 
-function removeSpotemon () {
-	
+function removeSpotemon(spotemon) {
+    let index = state.spotemon.indexOf(spotemon);
+    state.spotemon.splice(index, 1);
 }
 
 module.exports = {

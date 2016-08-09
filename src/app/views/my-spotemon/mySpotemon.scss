@@ -1,0 +1,72 @@
+$hel: Helvetica, sans-serif;
+$helLight: "HelveticaNeue-Light", sans-serif;
+$helMed:"HelveticaNeue-Medium", sans-serif;
+$green: #1ed760;
+$dark-grey: #555555;
+$light-grey: #BEBEBE;
+$yellow: #f6e900;
+
+html{
+  font-family: $hel;
+  margin:0;
+  padding:0;
+}
+
+.wrapper{background-color: $dark-grey;}
+
+.header{
+  font-family: $helLight;
+  font-weight: 100;
+  color: $light-grey;
+  margin: 0 5%;
+  padding: 5% 0;
+  text-align: center;
+  h1{
+    font-weight:inherit;
+    margin:0;
+  }
+  .line{
+    margin: 3%;
+    border-bottom: 2px solid $light-grey;
+    
+  }
+}
+
+.artist{
+  display:inline-block;
+  margin: 0 5%;
+  text-align:center;
+  .cp-text{
+    font-family:$helLight;
+    letter-spacing: 1px;
+    font-weight:100;
+    color: $yellow;
+    font-size: 10pt;
+    display:inline-block;
+    margin-right:5px;
+  }
+  .cp-points{
+    color: $light-grey;
+    font-size: 15pt;
+    display:inline-block;
+  }
+  .image{
+    border-radius: 50%;
+    overflow:hidden;
+    width:100px;
+    height:100px;
+    margin: 8% 0;
+
+    img{
+      height:100%;
+      position:relative;
+    }
+
+  }
+  .name{
+    font-family: $helMed;
+    color: $green;
+    font-weight: 50;
+    font-size: 10pt;
+  }
+}
