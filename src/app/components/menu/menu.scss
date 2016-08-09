@@ -33,11 +33,11 @@
 	text-align:center;
 }
 .bottom-menu-item-container:not(#main-menu-btn){
-	padding-top:20px;
+	padding-top:5px;
 
 	.menu-image{
-		width:40px;
-		height:40px;
+		width:50px;
+		height:50px;
 	}
 }
 .bottom-menu-image{
@@ -73,11 +73,11 @@
 
 #spotedex-btn{
 	bottom:80px;
-	left:20%;;
+	left:30%;;
 }
 #spotemon-btn{
 	bottom:80px;
-	right:20%;
+	right:30%;
 }
 #menu-exit-btn{
 	width:30px;
@@ -86,5 +86,5 @@
 	bottom:30px;
 	left:50%;
 
-	margin-left:-20px;
+	margin-left:-15px;
 }
