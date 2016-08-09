@@ -22,7 +22,9 @@ export default class MapHandler extends Component {
                 options);
 
         this.users = {};
-        setInterval(this.getOtherPlayers.bind(this), 5000);
+        this.spotemon = {};
+        setInterval(this.getOtherPlayers.bind(this), 2000);
+        setInterval(this.getSpotemon.bind(this), 2000);
     }
 
     updatePosition({latitude, longitude}) {
@@ -39,9 +41,35 @@ export default class MapHandler extends Component {
                 if (!user) {
                     user = this.users[userJSON.id] = userJSON;
                     user.marker = new google.maps.Marker({ position });
+                    user.marker.addListener('click', () => {
+                        // Start battle
+                        console.log(user)
+                    });
                     user.marker.setMap(this.map);
                 } else {
                     user.marker.setPosition(position);
+                }
+            });
+        })
+    }
+
+    getSpotemon() {
+        // I know it's called spotemon in plural but that makes it even more
+        // difficult to name it in sinular later.
+        $.get('api/spotemon/all', spotemons => {
+            spotemons.forEach(spotemonJSON => {
+                let position = spotemonJSON.coords;
+                let spotemon = this.spotemon[spotemonJSON.id];
+                if (!spotemon) {
+                    spotemon = this.spotemon[spotemonJSON.id] = spotemonJSON;
+                    spotemon.marker = new google.maps.Marker({ position });
+                    spotemon.marker.addListener('click', () => {
+                        // Start battle
+                        console.log(spotemon)
+                    });
+                    spotemon.marker.setMap(this.map);
+                } else {
+                    spotemon.marker.setPosition(position);
                 }
             });
         })
@@ -55,7 +83,9 @@ export default class MapHandler extends Component {
     }
 
     saveMarker(ref) {
-        this.marker = ref.getEntity();
+        if (ref && typeof ref.getEntity === 'function') {
+            this.marker = ref.getEntity();
+        }
     }
 
     render() {
