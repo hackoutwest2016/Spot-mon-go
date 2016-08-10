@@ -43,7 +43,7 @@ export default class Spotemon extends Component {
 		this.audio = new Audio();
 		spot.getArtistTopTracks(artistId,function (response) {
 			spot.getTrackToPlay(response.tracks[1].id, function(response){
-				self.setState(Object.assign({}, self.state, {artistName: response.artists[0].name, initialized:true, topTrack: response.name})),
+				self.setState(Object.assign({}, self.state, {initialized:true, topTrack: response.name})),
 				self.audio.src = response.preview_url,
  				self.audio.play()
 
@@ -51,7 +51,7 @@ export default class Spotemon extends Component {
 		})
 
 		spot.getArtist(artistId,function (response) {
-			self.setState(Object.assign({}, self.state, {carismaPoints: response.popularity, image: response.images[1].url}));
+			self.setState(Object.assign({}, self.state, {artistName: response.name, carismaPoints: response.popularity, image: response.images[1].url}));
 
 		})
 
