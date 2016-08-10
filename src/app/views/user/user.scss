@@ -13,12 +13,14 @@ html{
 }
 
 body {
+
 	color: rgb(55,55,55);
 	font: 100% Helvetica, sans-serif;
 }
 
 div#user{
 	margin-left: 8pt;
+	
 	.name{
 	    font-family: $helMed;
 	    color: $green;
@@ -66,7 +68,7 @@ div#user{
   	}
   	img {
 		border-radius:50%;
-		width: 25vh;
+		width: 30vh;
 		height: auto;
 		margin-left: 46pt;
 		position: relative;

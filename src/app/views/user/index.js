@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Menu from '../../components/menu';
 import style from './user.scss';
-
+import tools from '../../modules/tools.js';
 
 export default class User extends Component {
   	render() {
     	return (
 			<div id = "user">
-    			<img src = {require('../../assets/images/user.png')} alt = "User Icon" /> 
+    			<img src = {require('../../assets/images/avatar.png')} alt = "User Icon" /> 
 				<hr/>
 				<div className = "name">Name: </div>
 				<div className = "userName"> {this.state.initialized ? this.state.userName : 'Loading'}</div>
@@ -24,12 +24,13 @@ export default class User extends Component {
 			initialized: false,
 			userName: 'Lotta',
 			recordLabel: 'No label chosen yet',
-			spotemonsFetched: 0
+			spotemonsFetched: tools.getMyProp('spotemon').length
 		}
 	 }
 	 componentDidMount(){
 		var self = this;
 		this.setState(Object.assign({}, self.state, {initialized:true}));
+
 	 }
 
 }
