@@ -31,6 +31,9 @@ export default class App extends Component {
 	}
 	initBattleSocket () {
 		var self = this;
+		global.currentChallange = {
+			activeBattle: false
+		};
 
 		this.socket = io();
 
@@ -43,8 +46,10 @@ export default class App extends Component {
 		// });
 
 		this.socket.on('challanged', function(challange) {
-			self.refs.challange.show();
-			console.log('Challanged by: ' + challange);
+			if(!currentChallange.activeBattle){
+				self.refs.challange.show();
+				console.log('Challanged by: ' + challange);
+			}
 		});
 
 		this.socket.on('accepted', function(){

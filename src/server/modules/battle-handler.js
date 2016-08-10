@@ -58,11 +58,14 @@ module.exports = function(server){
 			});
 		});
 
-		// setTimeout(function(){
-		// 	socket.emit('challanged', 2);
-		// 	// 	socket.emit('accepted');
-		// 	// 	socket.emit('start');
-		// }, 2000);
+		setTimeout(function(){
+			socket.emit('challanged', {
+				challangeId: 2,
+				opponentId: 3
+			});
+			// 	socket.emit('accepted');
+			// 	socket.emit('start');
+		}, 2000);
 	});
 
 	function getCompetitorsByChallange(challangeId){
@@ -97,9 +100,12 @@ module.exports = function(server){
 	}
 
 	function challange(challangerId, opponentId){
-		// const sockets = getSockets(challangerId, opponentId);
-		//
-		// sockets.opponentSocket.emit('challange', opponentId);
+		const sockets = getSockets(challangerId, opponentId);
+
+		sockets.opponentSocket.emit('challange', {
+			challangeId,
+			opponentId
+		});
 	}
 	function acceptChallange(challangeId){
 		// const competitors = getCompetitorsByChallange(challangeId);
