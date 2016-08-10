@@ -11,7 +11,7 @@ html{
   margin:0;
   padding:0;
 }
-.wrapper{background-color: $dark-grey}
+.wrapper{background-color: $dark-grey;}
 
 body {
 	color: rgb(55,55,55);
@@ -19,6 +19,8 @@ body {
 }
 
 div#spotemon {
+		position: relative;
+
 	h4, p {
 		display: inline;
 		text-align: left;
@@ -41,8 +43,6 @@ div#spotemon {
 		text-align: center;
 		vertical-align: middle;
 	    margin-left: 5pt;
-		
-
 	}
 	.name{
     font-family: $helMed;
@@ -67,12 +67,25 @@ div#spotemon {
 		margin-left: 46pt;
 		position: relative;
 		top: -30px;
-
 	}
 
 	div#container{
 		margin: 20px;
 		width: 250px;
 		height: 50px;
+		position: relative;
+
 	}
+	hr {
+	color: $light-grey;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    padding: 0;
+    position: relative;
+    top: 54px;
+
+	}
+
 }

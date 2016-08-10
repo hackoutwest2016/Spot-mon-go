@@ -11,6 +11,7 @@ export default class Spotemon extends Component {
 			    <div className = "cp-text">CP: </div>
 			    <div className = "cp-points">{this.state.initialized ? this.state.carismaPoints : 'Loading'}</div>
     			<div id = "container"></div>
+    			<hr/>
     			<img src = {this.state.image} alt = "Artist Icon" /> 
 			    <div id="results">
 			    	<div className = "name">Name: </div>
@@ -46,7 +47,6 @@ export default class Spotemon extends Component {
 
 			})
 		})
-		
 
 		spot.getArtistPopularity(artistId,function (response) {
 			self.setState(Object.assign({}, self.state, {carismaPoints: response.popularity, image: response.images[1].url}));
