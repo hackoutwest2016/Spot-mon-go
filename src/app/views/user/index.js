@@ -24,8 +24,8 @@ export default class User extends Component {
 	  	super();
 	  	this.state = {
 			initialized: false,
-			userName: 'Lotta',
-			recordLabel: 'No label chosen yet',
+			userName: 'Lotta på Bråkmakargatan',
+			recordLabel: 'Downtown Records',
 			spotemonsFetched: tools.getMyProp('spotemon').length
 		}
 	 }
