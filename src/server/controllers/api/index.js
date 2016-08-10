@@ -32,6 +32,10 @@ router.route('/users/close').get(function(req, res){ //Get user
 	res.json(users.getCloseUsers(exampleUser));
 });
 
+router.route('/spotemon/count').get(function(req, res){ //Get all spotemon
+	res.json(spotemon.getSpotemonCount());
+});
+
 router.route('/spotemon/all').get(function(req, res){ //Get all spotemon
 	res.json(spotemon.getAllSpotemon());
 });

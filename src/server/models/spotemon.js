@@ -26,9 +26,14 @@ function removeSpotemon(spotemon) {
     state.spotemon.splice(index, 1);
 }
 
+function getSpotemonCount() {
+    return state.existingSpotemon.length;
+}
+
 module.exports = {
 	getAllSpotemon,
 	getCloseSpotemon,
 	addSpotemon,
-	removeSpotemon
+	removeSpotemon,
+    getSpotemonCount
 }

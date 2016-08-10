@@ -3,8 +3,8 @@ import Menu from '../../components/menu';
 import style from './mySpotemon.scss';
 import tools from '../../modules/tools.js'
 import api from '../spotemon/spotemon_2.js';
+import $ from 'jquery';
 import { Link } from 'react-router';
-
 
 export default class MySpotemon extends Component {
   	render() {
@@ -29,7 +29,7 @@ export default class MySpotemon extends Component {
 			<div id="myspotemon" className="wrapper">
         <div className="header">
   				<h1>MY SPOTÉMON</h1>
-          <div>{tools.getMyProp('spotemon').length}/143</div>
+          <div>{tools.getMyProp('spotemon').length}/{this.state.spotemonCount}</div>
           <div className="line"></div>
         </div>
         {namesList}
@@ -44,8 +44,14 @@ export default class MySpotemon extends Component {
       this.state = {
         initialized: false,
         spotemonIds: tools.getMyProp('spotemon'),
-        spotemon: []
+        spotemon: [],
+        spotemonCount: 1337
       }
+
+      $.get('/api/spotemon/count', count => {
+          console.log(count)
+          this.setState(Object.assign({}, this.state, {spotemonCount: count}));
+      });
 
       var self = this;
 
