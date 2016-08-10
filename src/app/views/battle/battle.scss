@@ -97,15 +97,23 @@ html{
 
 .rightPlayer{
   top:15%;
-  right:3%;
+  right:5%;
 }
 .leftPlayer{
   bottom:10%;
-  left:3%;
+  left:5%;
+  .note{
+
+    img{
+      width:50px;
+    }
+    
+  }
 
   .tap-text{
     color:$light-grey;
     font-weight: lighter;
+    text-align:center;
   }
 }
 
