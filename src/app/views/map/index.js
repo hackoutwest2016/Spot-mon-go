@@ -55,7 +55,7 @@ export default class MapHandler extends Component {
 	                    user = this.users[userJSON.id] = userJSON;
 	                    user.marker = new google.maps.Marker({ position });
 	                    user.marker.addListener('click', () => {
-	                        browserHistory.push('battle');
+	                        browserHistory.push('battle/' + userJSON.id);
 	                    });
 	                    user.marker.setIcon({
 	                        url: require('../../assets/images/opponent.png'),
@@ -84,7 +84,7 @@ export default class MapHandler extends Component {
                     spotemon = this.spotemon[spotemonJSON.id] = spotemonJSON;
                     spotemon.marker = new google.maps.Marker({ position });
                     spotemon.marker.addListener('click', () => {
-                        browserHistory.push('catch');
+                        browserHistory.push('catch/' + spotemonJSON.id);
                     });
                     spotemon.marker.setIcon({
                         url: require('../../assets/images/artist.png'),
