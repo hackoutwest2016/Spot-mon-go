@@ -17,7 +17,9 @@ body {
 	color: rgb(55,55,55);
 	font: 100% Helvetica, sans-serif;
 }
+
 div#user{
+	margin-left: 8pt;
 	.name{
 	    font-family: $helMed;
 	    color: $green;
@@ -40,12 +42,28 @@ div#user{
 	    font-size: 15pt;
 	    display: inline-block;
   	}
+  	.recordLabelName{
+  		font-family: $helMed;
+	    color: $dark-grey;
+	    font-weight: 50;
+	    font-size: 15pt;
+	    display: inline-block;
+	    margin-left: 5pt;
+  	}
   	.spotemonFetched{
 	    font-family: $helMed;
 	    color: $green;
 	    font-weight: 50;
 	    font-size: 15pt;
 	    display: inline-block;
+  	}
+  	.spotemonData{
+  		font-family: $helMed;
+	    color: $dark-grey;
+	    font-weight: 50;
+	    font-size: 15pt;
+	    display: inline-block;
+	    margin-left: 5pt;
   	}
   	img {
 		border-radius:50%;
@@ -54,4 +72,5 @@ div#user{
 		margin-left: 46pt;
 		position: relative;
 	}
+	
 }
