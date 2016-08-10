@@ -2,7 +2,6 @@
 
 
 .popup-container {
-	display:none;
 	position:absolute;
 
 	top:0;
@@ -16,19 +15,65 @@
 .popup{
 	position:absolute;
 
-	padding: 20px;
+	padding: 10px;
 	top:20vh;
 	left:5%;
 
 
 	width:90%;
-	height:320px;
+	height:330px;
 
 	z-index:100;
 
 	background-color:$dark-grey;
 
 	text-align: center;
+
+	h1{
+		color:$light-grey;
+		font-family: $helLight;
+		font-weight: 100;
+	}
+
+	.btn {
+		display:inline-block;
+
+		height: 50px;
+		width:200px;
+		line-height: 50px;
+
+		// vertical-align: middle;
+
+		border-radius: 25px;
+
+		transition: box-shadow 0.2s;
+	}
+	.btn:hover{
+		box-shadow: 0 4px 4px 0 rgba(0,0,0,0.5);
+	}
+
+	button, a {
+		display: inline-block;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		margin: 10px 0;
+		padding: 0px;
+		height: 50px;
+		border-width: 0;
+		font-weight: normal;
+		font-size: inherit;
+		text-decoration: none;
+		cursor: pointer;
+		font-size: 100%;
+	}
+	button:focus{
+		outline:none;
+	}
+	button::-moz-focus-inner {
+	  	border: 0;
+	  	padding: 0;
+	}
 }
 .popup.open{
 	display:block;
@@ -42,45 +87,7 @@
 	line-height: 200px;
 }
 
-.btn {
-	display:inline-block;
 
-	height: 50px;
-	width:200px;
-	line-height: 50px;
-
-	// vertical-align: middle;
-
-	border-radius: 25px;
-
-	transition: box-shadow 0.2s;
-}
-.btn:hover{
-	box-shadow: 0 4px 4px 0 rgba(0,0,0,0.5);
-}
-
-button, a {
-	display: inline-block;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	margin: 10px 0;
-	padding: 0px;
-	height: 50px;
-	border-width: 0;
-	font-weight: normal;
-	font-size: inherit;
-	text-decoration: none;
-	cursor: pointer;
-	font-size: 100%;
-}
-button:focus{
-	outline:none;
-}
-button::-moz-focus-inner {
-  	border: 0;
-  	padding: 0;
-}
 
 .popup-btn{
 
