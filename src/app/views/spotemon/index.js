@@ -40,12 +40,12 @@ export default class Spotemon extends Component {
 		var artistId = this.props.params.spotemonId;
 		self.setState(Object.assign({}, self.state, {artistId: artistId}));
 
-		var audio = new Audio();
+		this.audio = new Audio();
 		spot.getArtistTopTracks(artistId,function (response) {
 			spot.getTrackToPlay(response.tracks[1].id, function(response){
 				self.setState(Object.assign({}, self.state, {artistName: response.artists[0].name, initialized:true, topTrack: response.name})),
-				audio = new Audio (response.preview_url),
- 				audio.play()
+				self.audio.src = response.preview_url,
+ 				self.audio.play()
 
 			})
 		})
@@ -66,5 +66,8 @@ export default class Spotemon extends Component {
 		});
 		bar.animate(0.67);
 	}
-	
+
+    componentWillUnmount() {
+        this.audio.pause();
+    }
 };

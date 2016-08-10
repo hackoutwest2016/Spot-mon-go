@@ -14,8 +14,7 @@ function generateSpotemon(userIndex = 0) {
     }
     setTimeout(() => {
         generateSpotemon(userIndex + 1);
-    }, 1000);
-	// }, 30000);
+	}, 30000);
 }
 
 function generateSpotemonAtCoordinates(coordinates) {
