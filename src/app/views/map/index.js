@@ -47,7 +47,6 @@ export default class MapHandler extends Component {
 
     getOtherPlayers() {
         $.get('/api/users/all', users => {
-            console.log(users)
             let toBeRemoved = Object.assign({}, this.users);
             users.forEach(({id}) => {
                 delete toBeRemoved[id];
