@@ -7,6 +7,7 @@ import ProgressBar from 'progressbar.js';
 export default class Spotemon extends Component {
   	render() {
     	return (
+    		<div className="wrapper">
     		<div id="spotemon">
 			    <div className = "cp-text">CP: </div>
 			    <div className = "cp-points">{this.state.initialized ? this.state.carismaPoints : 'Loading'}</div>
@@ -17,6 +18,7 @@ export default class Spotemon extends Component {
 			    	<div className = "name">Name: </div>
 			    	<div className = "nameId">{this.state.initialized ? this.state.artistName : 'Loading'}</div>
 			    </div>
+			</div>
 			</div>
 	    );
 	  }
