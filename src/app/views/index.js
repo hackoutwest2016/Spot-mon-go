@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Menu from '../components/menu';
 import Challange from '../components/challange';
 
-import $ from 'jquery';
 import tools from '../modules/tools';
 
 export default class App extends Component {
