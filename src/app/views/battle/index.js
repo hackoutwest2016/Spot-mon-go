@@ -3,6 +3,8 @@ import Menu from '../../components/menu';
 import style from './battle.scss';
 import ProgressBar from 'progressbar.js';
 import SpotemonData from '../spotemon/spotemon_2.js';
+import $ from 'jquery';
+import velocity from 'velocity-animate';
 // import view from './battle.jsx';
 
 
@@ -28,12 +30,12 @@ export default class Battle extends Component {
                 mySpotemon: {
                   name: response.name,
                   cp: response.popularity,
-                  image: response.images[0].url
+                  image: response.images[0].url,
+                  health: 1
                 }
               }));
-            console.log(response.images);
 
-            bar1.animate(1);
+            self.bar1.animate(1);
           });
 
           SpotemonData.getArtist(artistId2, function(response){
@@ -42,36 +44,81 @@ export default class Battle extends Component {
                 opponentSpotemon: {
                   name: response.name,
                   cp: response.popularity,
-                  image: response.images[0].url
+                  image: response.images[0].url,
+                  health: 1
                 }
               }));
 
-            bar2.animate(1);
+            self.bar2.animate(1);
           });
 
-          var bar1 = new ProgressBar.Line('#progress-bar1', {
+          this.bar1 = new ProgressBar.Line('#progress-bar1', {
             strokeWidth: 6,
             easing: 'easeInOut',
-            duration: 1300,
+            duration: 200,
             color: '#4c99f9',
             trailColor: '#eee',
             trailWidth: 1,
             svgStyle: null
           });
-          var bar2 = new ProgressBar.Line('#progress-bar2', {
+          this.bar2 = new ProgressBar.Line('#progress-bar2', {
             strokeWidth: 6,
             easing: 'easeInOut',
-            duration: 1300,
+            duration: 200,
             color: '#4c99f9',
             trailColor: '#eee',
             trailWidth: 1,
             svgStyle: null
           });
-          
+      
+      this.click = this.click.bind(this);
     }
+
+    click () {
+      var self = this;
+      console.log("click");
+      var damage = (self.state.mySpotemon.cp/100)*6;
+      console.log("damage: " + damage);
+      var health = self.state.opponentSpotemon.health;
+      var name = self.state.opponentSpotemon.name;
+      var cp = self.state.opponentSpotemon.cp;
+      var image = self.state.opponentSpotemon.image;
+
+      if(health>=0){
+        health = self.state.opponentSpotemon.health-damage/100;
+
+        console.log("health: " + health);
+        self.setState(Object.assign({}, self.state, {
+          opponentSpotemon: {
+            name: name,
+            cp: cp,
+            image: image,
+            health: health
+          }
+        }));
+        
+        this.bar2.animate(health);
+
+        // $(".note").velocity({ 
+        //   translateY: 150, 
+        //   translateX: 150 
+        // }, 
+        // {
+        // duration: 500,
+        // easing: [ .42, 0, .58, 1 ]
+        // })
+        // .velocity("fadeOut", { duration: 500 });
+
+      }
+      else{
+        console.log('win!');
+        //interrupts opponent
+      }
+    }
+
   	render() {
     	return (
-        <div className="wrapper">
+        <div className="battle-wrapper">
 
           <div className="battle-stage stage1"><img src={require('../../assets/images/battlestage1.png')}/></div>
           <div className="battle-stage stage2"><img src={require('../../assets/images/battlestage2.png')}/></div>
@@ -95,8 +142,11 @@ export default class Battle extends Component {
             <div className="image"><img src={this.state.opponentSpotemon.image}/></div>
           </div>
 
-          <div className="artist leftPlayer">
-            <div className="image"><img src={this.state.mySpotemon.image}/></div>
+          <div onClick={this.click} className="artist leftPlayer">
+            <div className="image">
+              <img src={this.state.mySpotemon.image}/>
+              <div className="note"><img src={require('../../assets/images/note.png')}/></div>
+            </div>
             <div className="tap-text">Tap to perform!</div>
           </div>
 
