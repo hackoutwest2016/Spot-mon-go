@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import tools from '../../modules/tools';
+
+import style from './catch.scss';
 
 export default class Catch extends Component {
 	componentDidMount() {
@@ -25,7 +28,12 @@ export default class Catch extends Component {
 
   	render() {
     	return (
-			<div>Catch: {this.props.params.spotemonId}</div>
+			<div className="message-view">
+				<h1>A new Spotémon was caught!</h1>
+				<img src={require('../../assets/images/artist.png')} width="180" height="180" />
+				<Link to={"/spotemon/" + this.props.params.spotemonId}><button className="btn popup-btn popup-btn-accept">Check it out</button></Link>
+				<Link to="/"><button className="btn popup-btn popup-btn-decline">Later</button></Link>
+			</div>
 	    );
   	}
 }

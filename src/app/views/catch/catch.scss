@@ -1,0 +1,17 @@
+@import '../variables';
+
+.message-view{
+	height:100vh;
+	background-color: $dark-grey;
+
+	padding: 20px;
+
+	text-align:center;
+
+	h1{
+		color:$green;
+
+		font-family: $helLight;
+		font-weight: 100;
+	}
+}
