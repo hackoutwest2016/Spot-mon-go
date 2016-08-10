@@ -20,6 +20,8 @@ var bodyParser = require('body-parser');
 // ==========================================================================
 require('./models/state');
 
+
+
 // BODY PARSER -------------------------------
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -36,5 +38,7 @@ app.use('/api', api);
 
 // START THE SERVER
 // ==========================================================================
-app.listen(3001);
+var server = app.listen(3001);
 console.log('Magic happens on port ' + 3001);
+
+var battleHandler = require('./modules/battle-handler')(server);
