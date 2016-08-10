@@ -15,6 +15,7 @@ html{
 #myspotemon{
   background-color: $dark-grey;
   text-align: center;
+  padding-bottom: 5pt;
   height: 100%;
   overflow: auto;
 
@@ -37,8 +38,14 @@ html{
 
 .artist{
   display:inline-block;
-  margin: 0 5%;
+  margin: 0 5% 25px;
   text-align:center;
+
+  a {
+    display: block;
+    height: 100%;
+  }
+
   .cp-text{
     font-family:$helLight;
     letter-spacing: 1px;
@@ -53,14 +60,16 @@ html{
     font-size: 15pt;
     display:inline-block;
   }
+
   .image{
-    border-radius: 50%;
     overflow:hidden;
     width:100px;
     height:100px;
     margin: 8% 0;
 
     img{
+      border-radius: 50%;
+      width: 100%;
       height:100%;
       position:relative;
     }
@@ -71,6 +80,10 @@ html{
     color: $green;
     font-weight: 50;
     font-size: 10pt;
+  }
+
+  &:last-child{
+    padding-bottom: 70px;
   }
 }
 }

@@ -12,9 +12,6 @@ export default class App extends Component {
 		super();
 
 		this.initUser();
-	}
-
-	componentDidMount () {
 		this.initBattleSocket();
 	}
 
@@ -33,27 +30,47 @@ export default class App extends Component {
 		tools.saveMySelf();
 	}
 	initBattleSocket () {
+		var self = this;
+		global.currentChallange = {
+			activeBattle: false
+		};
+
 		this.socket = io();
 
 		this.socket.emit('identification', myself.id);
-		this.socket.emit('challange', {
-			challangeId: new Date().getTime(),
-			challangerId: myself.id,
-			spotemon: {},
-			opponentId: 2
-		});
+		// this.socket.emit('challange', {
+		// 	challangeId: new Date().getTime(),
+		// 	challangerId: myself.id,
+		// 	spotemon: {},
+		// 	opponentId: 2
+		// });
 
-		this.socket.on('challanged', function(opponentId) {
-			console.log('Challanged by: ' + opponentId);
+		this.socket.on('challanged', function(challange) {
+			if(!currentChallange.activeBattle){
+				self.refs.challange.show();
+				console.log('Challanged by: ' + challange.opponentId);
+			}
 		});
 
 		this.socket.on('accepted', function(){
-			console.log('accepted');
+			acceptChallange();
 		});
 
 		this.socket.on('start', function(){
 			console.log('Start challange');
 		});
+
+		this.acceptChallange = this.acceptChallange.bind(this);
+		this.declineChallange = this.declineChallange.bind(this);
+	}
+
+	acceptChallange() {
+		console.log('accept');
+		this.socket.emit('accept', {});
+	}
+
+	declineChallange() {
+		console.log('decline challange');
 	}
 
     fullscreen() {
@@ -75,7 +92,7 @@ export default class App extends Component {
 			<div>
                 <button id="start" onClick={this.fullscreen}>Start!</button>
 				<Menu />
-				<Challange />
+				<Challange ref="challange" accept={this.acceptChallange} decline={this.declineChallange} />
 		   		{this.props.children}
 	   		</div>
     	);

@@ -2,7 +2,6 @@
 
 
 .popup-container {
-	display:none;
 	position:absolute;
 
 	top:0;
@@ -16,30 +15,25 @@
 .popup{
 	position:absolute;
 
-	padding: 20px;
+	padding: 10px;
 	top:20vh;
 	left:5%;
 
 
 	width:90%;
-	height:320px;
+	height:330px;
 
 	z-index:100;
 
 	background-color:$dark-grey;
 
 	text-align: center;
-}
-.popup.open{
-	display:block;
-}
 
-.hide{
-	display:none !important;
-}
-
-.loading-text{
-	line-height: 200px;
+	h1{
+		color:$light-grey;
+		font-family: $helLight;
+		font-weight: 100;
+	}
 }
 
 .btn {
@@ -78,9 +72,23 @@ button:focus{
 	outline:none;
 }
 button::-moz-focus-inner {
-  	border: 0;
-  	padding: 0;
+	border: 0;
+	padding: 0;
 }
+
+.popup.open{
+	display:block;
+}
+
+.hide{
+	display:none !important;
+}
+
+.loading-text{
+	line-height: 200px;
+}
+
+
 
 .popup-btn{
 
