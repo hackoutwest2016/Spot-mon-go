@@ -32,10 +32,10 @@ export default class Menu extends Component {
 				<div id="folded-menu">
 					<div className="folded-menu-item">
 						<Link to="/spotedex">
-							<img onClick={this.toggleMenu} src={require('../../assets/images/artist.png')} className="menu-image folded-menu-image" id="spotedex-btn"/>
+							<img onClick={this.toggleMenu} src={require('../../assets/images/spotedex.png')} className="menu-image folded-menu-image" id="spotedex-btn"/>
 						</Link>
 						<Link to="/my-spotemon">
-							<img onClick={this.toggleMenu} src={require('../../assets/images/artist.png')} className="menu-image folded-menu-image" id="spotemon-btn"/>
+							<img onClick={this.toggleMenu} src={require('../../assets/images/spotemons.png')} className="menu-image folded-menu-image" id="spotemon-btn"/>
 						</Link>
 
 						<img src={require('../../assets/images/cancel.png')} onClick={this.toggleMenu} className="menu-image folded-menu-image" id="menu-exit-btn"/>
