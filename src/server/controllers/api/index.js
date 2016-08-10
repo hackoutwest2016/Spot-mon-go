@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var http = require('http');
+
 var users = require('../../models/users');
 var spotemon = require('../../models/spotemon');
 
@@ -39,6 +41,22 @@ router.route('/spotemon/close').get(function(req, res){ //Get close spotemon
 
 router.route('/challanges').get(function(req, res){
 	res.json(state.activeChallanges);
+});
+
+router.route('/artists/:userId/:playlistId').get(function(req, res){
+	var options = {
+	  host: 'https://api.spotify.com/v1/users/' + req.params.userId + '/playlists/' + req.params.playlistId,
+	  port: '80',
+	  method: 'GET',
+	  headers: {
+	    'Content-Type': 'application/x-www-form-urlencoded',
+		'Bearer': 'Token needed'
+	  }
+	};
+
+	http.request(options, function(response) {
+		res.json(response);
+	});
 });
 
 module.exports = router;
