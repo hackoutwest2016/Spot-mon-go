@@ -52,6 +52,8 @@
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-gmaps": "^1.5.0",
-    "react-progressbar.js": "^0.2.0"
+    "react-progressbar.js": "^0.2.0",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8"
   }
 }
