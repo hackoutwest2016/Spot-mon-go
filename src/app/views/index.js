@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 import Menu from '../components/menu';
 import Challange from '../components/challange';
@@ -23,9 +24,24 @@ export default class App extends Component {
 		tools.saveMySelf();
 	}
 
+    fullscreen() {
+        $('#start').remove();
+        let elem = document.querySelector('body > div#root');
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        }
+    }
+
   	render() {
     	return (
 			<div>
+                <button id="start" onClick={this.fullscreen}>Start!</button>
 				<Menu />
 				<Challange />
 		   		{this.props.children}
