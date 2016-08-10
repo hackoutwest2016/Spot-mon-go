@@ -7,8 +7,15 @@ import api from '../spotemon/spotemon_2.js';
 export default class MySpotemon extends Component {
   	render() {
       var spotemonIds = this.state.spotemon;
-      var namesList =spotemonIds.map(function(name){
-        return <li> {name}</li>;
+      var namesList =spotemonIds.map(function(spotemon){
+        return( 
+          <div key={spotemon.spotemonId} className="artist">
+            <div className="cp-text">CP</div>
+            <div className="cp-points">{spotemon.charismaPoints}</div>
+            <div className="image"><img src={spotemon.image} alt = "Artist Icon"/></div>
+            <div className="name">{spotemon.name }</div>
+          </div>
+        )
       })
 
     	return (
@@ -18,15 +25,7 @@ export default class MySpotemon extends Component {
           <div>87/143</div>
           <div className="line"></div>
         </div>
-				
-
-        <div className="artist">
-          <div className="cp-text">CP</div>
-          <div className="cp-points">70</div>
-          <div className="image"><img src={this.state.image} alt = "Artist Icon"/></div>
-          <div className="name">{this.state.initialized? this.state.artistName : 'Loading'}</div>
-        </div>
-
+        {namesList}
 			</div>
 	    );
 
@@ -49,8 +48,8 @@ export default class MySpotemon extends Component {
         api.getArtist(id, function(response){
           loadedSpotemons.push({
             name: response.name,
-            charismaPoints: response.charismaPoints,
-            image: response.images[0],
+            charismaPoints: response.popularity,
+            image: response.images[1].url,
             spotemonId: id
           });
 
