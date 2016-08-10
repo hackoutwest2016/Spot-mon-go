@@ -3,6 +3,8 @@ import Menu from '../../components/menu';
 import style from './mySpotemon.scss';
 import tools from '../../modules/tools.js'
 import api from '../spotemon/spotemon_2.js';
+import { Link } from 'react-router';
+
 
 export default class MySpotemon extends Component {
   	render() {
@@ -12,7 +14,12 @@ export default class MySpotemon extends Component {
           <div key={spotemon.spotemonId} className="artist">
             <div className="cp-text">CP</div>
             <div className="cp-points">{spotemon.charismaPoints}</div>
-            <div className="image"><img src={spotemon.image} alt = "Artist Icon"/></div>
+            <Link to={"/spotemon/" + spotemon.spotemonId}> 
+                <div className="image">
+                  <img src={spotemon.image} alt = "Artist Icon"/>
+                </div>
+            </Link>
+           
             <div className="name">{spotemon.name }</div>
           </div>
         )
