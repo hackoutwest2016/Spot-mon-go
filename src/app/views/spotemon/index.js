@@ -13,7 +13,7 @@ export default class Spotemon extends Component {
 			    <div className = "cp-points">{this.state.initialized ? this.state.carismaPoints : 'Loading'}</div>
     			<div id = "container"></div>
     			<hr/>
-    			<img src = {this.state.image} alt = "Artist Icon" /> 
+            	<div className="image"><img src={this.state.image} alt = "Artist Icon"/></div>			    
 			    <div id="results">
 			    	<div className = "name">Name: </div>
 			    	<div className = "nameId">{this.state.initialized ? this.state.artistName : 'Loading'}</div>

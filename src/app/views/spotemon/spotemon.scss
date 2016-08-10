@@ -20,7 +20,6 @@ body {
 }
 
 div#spotemon {
-		position: relative;
 
 	h4, p {
 		display: inline;
@@ -45,36 +44,48 @@ div#spotemon {
 		vertical-align: middle;
 	    margin-left: 5pt;
 	}
-	.name{
-    font-family: $helMed;
-    color: $green;
-    font-weight: 50;
-    font-size: 15pt;
-    display: inline-block;
-    margin-left: 25pt;
-  	}
-  	.nameId{
-  		font-family: $helMed;
-	    color: $light-grey;
-	    font-weight: 50;
-	    font-size: 15pt;
-	    display: inline-block;
-	    margin-left: 5pt;
-  	}
-  	img {
-		border-radius:50%;
-		width: 25vh;
-		height: auto;
-		margin-left: 46pt;
+	#results{
 		position: relative;
-		top: -30px;
-	}
+		top: -120px;
+		.name{
+		    font-family: $helMed;
+		    color: $green;
+		    font-weight: 50;
+		    font-size: 15pt;
+		    display: inline-block;
+		    margin-left: 25pt;
 
+	  	}
+	  	.nameId{
+	  		font-family: $helMed;
+		    color: $light-grey;
+		    font-weight: 50;
+		    font-size: 15pt;
+		    display: inline-block;
+		    margin-left: 5pt;
+	  	}
+  	}
+	.image{
+	    border-radius: 50%;
+	    overflow:hidden;
+	    width:150px;
+	    height:150px;
+	    margin: 8% 0;
+	    margin-left: 55pt;
+	    position: relative;
+	    top: -85px;
+
+	    img{
+	      height:100%;
+	      position:relative;
+
+	    }
+
+	  }
 	div#container{
 		margin: 20px;
 		width: 250px;
 		height: 50px;
-		position: relative;
 
 	}
 	hr {
