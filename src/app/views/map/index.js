@@ -35,7 +35,7 @@ export default class MapHandler extends Component {
         this.map.setCenter(position);
 
 		$.post({
-			url: 'api/users',
+			url: '/api/users',
 			data: {
 				userId: Tools.getMyProp('id'),
 				position: JSON.stringify(position)
@@ -46,7 +46,8 @@ export default class MapHandler extends Component {
     }
 
     getOtherPlayers() {
-        $.get('api/users/all', users => {
+        $.get('/api/users/all', users => {
+            console.log(users)
             let toBeRemoved = Object.assign({}, this.users);
             users.forEach(({id}) => {
                 delete toBeRemoved[id];
@@ -84,7 +85,7 @@ export default class MapHandler extends Component {
     getSpotemon() {
         // I know it's called spotemon in plural but that makes it even more
         // difficult to name it in sinular later.
-        $.get('api/spotemon/all', spotemons => {
+        $.get('/api/spotemon/all', spotemons => {
             let toBeRemoved = Object.assign({}, this.spotemon);
             spotemons.forEach(({id}) => {
                 delete toBeRemoved[id];
