@@ -47,7 +47,6 @@ export default class Spotemon extends Component {
 
 			})
 		})
-		
 
 		spot.getArtistPopularity(artistId,function (response) {
 			self.setState(Object.assign({}, self.state, {carismaPoints: response.popularity, image: response.images[1].url}));
