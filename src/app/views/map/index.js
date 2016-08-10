@@ -30,15 +30,15 @@ export default class MapHandler extends Component {
     }
 
     updatePosition({latitude, longitude}) {
-        let position = {lat: latitude, lng: longitude};
-        this.marker.setPosition(position);
-        this.map.setCenter(position);
+        this.position = {lat: latitude, lng: longitude};
+        this.marker.setPosition(this.position);
+        this.map.setCenter(this.position);
 
 		$.post({
 			url: '/api/users',
 			data: {
 				userId: Tools.getMyProp('id'),
-				position: JSON.stringify(position)
+				position: JSON.stringify(this.position)
 			},
 			success: function(response){},
 			error: function(response){console.error(response);}
@@ -120,6 +120,9 @@ export default class MapHandler extends Component {
         map.setOptions({
             disableDefaultUI: true
         });
+        google.maps.event.addListener(map, 'zoom_changed', () => {
+            this.map.setCenter(this.position);
+        })
     }
 
     saveMarker(ref) {
@@ -147,7 +150,7 @@ export default class MapHandler extends Component {
                 draggable={false}
                 zoom={19}
                 maxZoom={19}
-                minZoom={19}
+                minZoom={17}
                 clickableIcons={false}
                 styles={MapStyles}
                 onMapCreated={this.onMapCreated.bind(this)}
