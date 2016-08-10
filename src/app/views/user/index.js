@@ -6,17 +6,17 @@ import tools from '../../modules/tools.js';
 export default class User extends Component {
   	render() {
     	return (
-    		<div className ="wrapper">
-			<div id = "user">
-    			<img src = {require('../../assets/images/avatar.png')} alt = "User Icon" /> 
-				<hr/>
-				<div className = "name">Name: </div>
-				<div className = "userName"> {this.state.initialized ? this.state.userName : 'Loading'}</div>
-				<br/>
-				<div className = "recordLabel">Record label: </div> <div className = "recordLabelName"> {this.state.initialized ? this.state.recordLabel : 'Loading'}</div>
-				<br/>
-				<div className = "spotemonFetched"> Antal spotémon fångade: </div> <div className ="spotemonData"> {this.state.initialized? this.state.spotemonsFetched : 'Loading'}</div>
-			</div>
+    		<div className ="wrapp">
+				<div id = "user">
+	    			<img src = {require('../../assets/images/avatar.png')} alt = "User Icon" /> 
+					<hr/>
+					<div className = "name">Name: </div>
+					<div className = "userName"> {this.state.initialized ? this.state.userName : 'Loading'}</div>
+					<br/>
+					<div className = "recordLabel">Record label: </div> <div className = "recordLabelName"> {this.state.initialized ? this.state.recordLabel : 'Loading'}</div>
+					<br/>
+					<div className = "spotemonFetched"> Antal spotémon fångade: </div> <div className ="spotemonData"> {this.state.initialized? this.state.spotemonsFetched : 'Loading'}</div>
+				</div>
 			</div>
 	    );
   	}
