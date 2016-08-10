@@ -59,10 +59,10 @@ module.exports = function(server){
 		});
 
 		// setTimeout(function(){
-		// 	socket.emit('challanged');
-		// 	socket.emit('accepted');
-		// 	socket.emit('start');
-		// }, 1000);
+		// 	socket.emit('challanged', 2);
+		// 	// 	socket.emit('accepted');
+		// 	// 	socket.emit('start');
+		// }, 2000);
 	});
 
 	function getCompetitorsByChallange(challangeId){

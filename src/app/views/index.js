@@ -11,9 +11,6 @@ export default class App extends Component {
 		super();
 
 		this.initUser();
-	}
-
-	componentDidMount () {
 		this.initBattleSocket();
 	}
 
@@ -32,18 +29,21 @@ export default class App extends Component {
 		tools.saveMySelf();
 	}
 	initBattleSocket () {
+		var self = this;
+
 		this.socket = io();
 
 		this.socket.emit('identification', myself.id);
-		this.socket.emit('challange', {
-			challangeId: new Date().getTime(),
-			challangerId: myself.id,
-			spotemon: {},
-			opponentId: 2
-		});
+		// this.socket.emit('challange', {
+		// 	challangeId: new Date().getTime(),
+		// 	challangerId: myself.id,
+		// 	spotemon: {},
+		// 	opponentId: 2
+		// });
 
-		this.socket.on('challanged', function(opponentId) {
-			console.log('Challanged by: ' + opponentId);
+		this.socket.on('challanged', function(challange) {
+			self.refs.challange.show();
+			console.log('Challanged by: ' + challange);
 		});
 
 		this.socket.on('accepted', function(){
@@ -53,13 +53,25 @@ export default class App extends Component {
 		this.socket.on('start', function(){
 			console.log('Start challange');
 		});
+
+		this.acceptChallange = this.acceptChallange.bind(this);
+		this.declineChallange = this.declineChallange.bind(this);
+	}
+
+	acceptChallange() {
+		console.log('accept');
+		this.socket.emit('accept', {});
+	}
+
+	declineChallange() {
+		console.log('decline challange');
 	}
 
   	render() {
     	return (
 			<div>
 				<Menu />
-				<Challange />
+				<Challange ref="challange" accept={this.acceptChallange} decline={this.declineChallange} />
 		   		{this.props.children}
 	   		</div>
     	);

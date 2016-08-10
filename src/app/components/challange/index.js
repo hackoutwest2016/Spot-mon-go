@@ -6,18 +6,16 @@ export default class Challange extends Component {
 		super();
 
 		this.state = {
-			open: true,
-			loading: true
+			open: false,
+			loading: false
 		};
 
+		this.show = this.show.bind(this);
 		this.cancel = this.cancel.bind(this);
 	}
 
-	accept () {
-		this.setState(Object.assign({}, this.state, {open:false}));
-	}
-	decline () {
-		this.setState(Object.assign({}, this.state, {open:false}));
+	show () {
+		this.setState(Object.assign({}, this.state, {open:true}));
 	}
 	cancel () {
 		this.decline();
@@ -29,8 +27,8 @@ export default class Challange extends Component {
 				<div className="popup">
 					<div className={this.state.loading ? 'hide' : ''}>
 						<h1 className="header">A Spotémon manager has challanged you!</h1>
-						<button className="btn popup-btn popup-btn-accept">Accept</button>
-						<button className="btn popup-btn popup-btn-decline">Decline</button>
+						<button onClick={this.props.accept} className="btn popup-btn popup-btn-accept">Accept</button>
+						<button onClick={this.props.decline} className="btn popup-btn popup-btn-decline">Decline</button>
 					</div>
 					<div className={this.state.loading ? '' : 'hide'}>
 						<h1 className="header loading-text">Laddar...</h1>
