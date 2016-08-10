@@ -11,7 +11,7 @@ html{
   margin:0;
   padding:0;
 }
-.wrapper{background-color: $dark-grey;
+.wrapp{background-color: $dark-grey;
 height: 100%;}
 
 body {
@@ -20,12 +20,7 @@ body {
 }
 
 div#spotemon {
-
-	h4, p {
-		display: inline;
-		text-align: left;
-	
-	}
+	margin-left: 100pt;
 	.cp-text{
 		font-family: $helLight;
 		letter-spacing: 1px;
@@ -86,7 +81,7 @@ div#spotemon {
 		margin: 20px;
 		width: 250px;
 		height: 50px;
-
+		position: relative;
 	}
 	hr {
 	color: $light-grey;
@@ -97,6 +92,7 @@ div#spotemon {
     padding: 0;
     position: relative;
     top: 54px;
+    margin-left: -100pt;
 
 	}
 
