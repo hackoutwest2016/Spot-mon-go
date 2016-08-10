@@ -48,12 +48,12 @@ export default class App extends Component {
 		this.socket.on('challanged', function(challange) {
 			if(!currentChallange.activeBattle){
 				self.refs.challange.show();
-				console.log('Challanged by: ' + challange);
+				console.log('Challanged by: ' + challange.opponentId);
 			}
 		});
 
 		this.socket.on('accepted', function(){
-			console.log('accepted');
+			acceptChallange();
 		});
 
 		this.socket.on('start', function(){

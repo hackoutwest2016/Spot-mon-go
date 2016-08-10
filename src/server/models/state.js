@@ -19,7 +19,11 @@ if(!global.state){
             "0cAOG10Gh3ORpBRZ9c7Zam",
             "33zLgL7tT1vg7eRpWYX5uI"
         ],
-		"activeChallanges": []
+		"activeChallanges": [
+			{
+				challangeId: 1
+			}
+		]
 	};
 }
 

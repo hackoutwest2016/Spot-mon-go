@@ -27,7 +27,9 @@ module.exports = function(server){
 			});
 			socket.on('accept', function(acceptData){ //acceptData: challangeId, spotemon
 				state.activeChallanges.forEach((challange) => {
-					challange.opponent.spotemon = acceptData.spotemon;
+					if(challange.id === acceptData.challangeId){
+						challange.opponent.spotemon = acceptData.spotemon;
+					}
 				});
 
 				acceptChallange(acceptData.challangeId);
@@ -58,14 +60,14 @@ module.exports = function(server){
 			});
 		});
 
-		setTimeout(function(){
-			socket.emit('challanged', {
-				challangeId: 2,
-				opponentId: 3
-			});
-			// 	socket.emit('accepted');
-			// 	socket.emit('start');
-		}, 2000);
+		// setTimeout(function(){
+		// 	socket.emit('challanged', {
+		// 		challangeId: 2,
+		// 		opponentId: 3
+		// 	});
+		// 	// 	socket.emit('accepted');
+		// 	// 	socket.emit('start');
+		// }, 2000);
 	});
 
 	function getCompetitorsByChallange(challangeId){
