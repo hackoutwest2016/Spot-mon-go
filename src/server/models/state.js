@@ -18,7 +18,8 @@ if(!global.state){
             "3H7Ez7cwaYw4L3ELy4v3Lc",
             "0cAOG10Gh3ORpBRZ9c7Zam",
             "33zLgL7tT1vg7eRpWYX5uI",
-            "6xrCU6zdcSTsG2hLrojpmI"
+            "6xrCU6zdcSTsG2hLrojpmI",
+            "3KqfgW7Ha0DNBnrPRpkhbE"
         ],
 		"activeChallanges": [
 			{
