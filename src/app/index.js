@@ -15,6 +15,7 @@ import User from './views/user';
 import Spotedex from './views/spotedex';
 import Battle from './views/battle';
 import Catch from './views/catch';
+import Win from './views/win';
 
 import style from './views/main.scss';
 
@@ -30,6 +31,7 @@ ReactDOM.render((
 			<Route path="spotedex" component={Spotedex} />
 			<Route path="battle/:userId" component={Battle} />
 			<Route path="catch/:spotemonId" component={Catch} />
+			<Route path="win" component={Win} />
 		</Route>
 	</Router>
 ), document.getElementById('root'));

@@ -5,6 +5,7 @@ import ProgressBar from 'progressbar.js';
 import SpotemonData from '../spotemon/spotemon_2.js';
 import $ from 'jquery';
 import velocity from 'velocity-animate';
+import {browserHistory} from "react-router";
 // import view from './battle.jsx';
 
 
@@ -98,6 +99,9 @@ export default class Battle extends Component {
         }));
         
         this.bar2.animate(health);
+        setTimeout(() => {
+          this.bar1.animate(Math.min(1, health+0.1));
+        }, 500);
 
         // $(".note").velocity({ 
         //   translateY: 150, 
@@ -112,6 +116,8 @@ export default class Battle extends Component {
       }
       else{
         console.log('win!');
+        browserHistory.push('/win');
+        //route to win view
         //interrupts opponent
       }
     }
