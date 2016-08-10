@@ -29,7 +29,7 @@ export default class MySpotemon extends Component {
 			<div id="myspotemon" className="wrapper">
         <div className="header">
   				<h1>MY SPOTÉMON</h1>
-          <div>87/143</div>
+          <div>{tools.getMyProp('spotemon').length}/143</div>
           <div className="line"></div>
         </div>
         {namesList}
