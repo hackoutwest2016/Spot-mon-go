@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Menu from '../../components/menu';
 import style from './mySpotemon.scss';
 import tools from '../../modules/tools.js'
+import api from '../spotemon/spotemon_2.js';
 
-import api from '..';
 export default class MySpotemon extends Component {
   	render() {
       var spotemonIds = this.state.spotemon;
-      var namesList =names.map(function(name){
+      var namesList =spotemonIds.map(function(name){
         return <li> {name}</li>;
       })
 
