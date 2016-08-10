@@ -47,28 +47,36 @@ export default class MapHandler extends Component {
 
     getOtherPlayers() {
         $.get('api/users/all', users => {
-            users.forEach(userJSON => {
-				if(myself.id === userJSON.id){
-	                let position = userJSON.coords;
-	                let user = this.users[userJSON.id];
+            let toBeRemoved = Object.assign({}, this.users);
+            users.forEach(({id}) => {
+                delete toBeRemoved[id];
+            });
+            Object.keys(toBeRemoved).forEach(id => {
+                toBeRemoved[id].setMap();
+                delete this.users[id];
+            });
 
-	                if (!user) {
-	                    user = this.users[userJSON.id] = userJSON;
-	                    user.marker = new google.maps.Marker({ position });
-	                    user.marker.addListener('click', () => {
-	                        browserHistory.push('battle/' + userJSON.id);
-	                    });
-	                    user.marker.setIcon({
-	                        url: require('../../assets/images/opponent.png'),
-	                        scaledSize: new google.maps.Size(52, 52),
-	                        origin: new google.maps.Point(0,0),
-	                        anchor: new google.maps.Point(0, 0)
-	                    });
-	                    user.marker.setMap(this.map);
-	                } else {
-	                    user.marker.setPosition(position);
-	                }
-				}
+            users.forEach(user => {
+                if (user.id != myself.id) {
+                    if (!this.users[user.id]) {
+                        let position = user.coords;
+                        let map = this.map;
+
+                        let marker = new google.maps.Marker({ position, map });
+                        marker.addListener('click', () => {
+                            browserHistory.push('battle/' + user.id);
+                        });
+                        marker.setIcon({
+                            url: require('../../assets/images/opponent.png'),
+                            scaledSize: new google.maps.Size(52, 52),
+                            origin: new google.maps.Point(0,0),
+                            anchor: new google.maps.Point(0, 0)
+                        });
+                        this.users[user.id] = marker;
+                    } else {
+                        this.users[user.id].setPosition(user.coords);
+                    }
+                }
             });
         });
     }
@@ -137,9 +145,9 @@ export default class MapHandler extends Component {
                 streetViewControl={false}
                 zoomControl={false}
                 draggable={false}
-                zoom={18}
-                maxZoom={18}
-                minZoom={18}
+                zoom={19}
+                maxZoom={19}
+                minZoom={19}
                 clickableIcons={false}
                 styles={MapStyles}
                 onMapCreated={this.onMapCreated.bind(this)}
