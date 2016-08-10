@@ -32,31 +32,44 @@ export default class MapHandler extends Component {
         let position = {lat: latitude, lng: longitude};
         this.marker.setPosition(position);
         this.map.setCenter(position);
+
+		$.post({
+			url: 'api/users',
+			data: {
+				userId: JSON.parse(localStorage.getItem('user')).id,
+				position: JSON.stringify(position)
+			},
+			success: function(response){},
+			error: function(response){console.error(response);}
+		});
     }
 
     getOtherPlayers() {
         $.get('api/users/all', users => {
             users.forEach(userJSON => {
-                let position = userJSON.coords;
-                let user = this.users[userJSON.id];
-                if (!user) {
-                    user = this.users[userJSON.id] = userJSON;
-                    user.marker = new google.maps.Marker({ position });
-                    user.marker.addListener('click', () => {
-                        browserHistory.push('battle')
-                    });
-                    user.marker.setIcon({
-                        url: require('../../assets/images/opponent.png'),
-                        scaledSize: new google.maps.Size(52, 52),
-                        origin: new google.maps.Point(0,0),
-                        anchor: new google.maps.Point(0, 0)
-                    });
-                    user.marker.setMap(this.map);
-                } else {
-                    user.marker.setPosition(position);
-                }
+				if(myself.id === userJSON.id){
+	                let position = userJSON.coords;
+	                let user = this.users[userJSON.id];
+
+	                if (!user) {
+	                    user = this.users[userJSON.id] = userJSON;
+	                    user.marker = new google.maps.Marker({ position });
+	                    user.marker.addListener('click', () => {
+	                        browserHistory.push('battle/' + userJSON.id);
+	                    });
+	                    user.marker.setIcon({
+	                        url: require('../../assets/images/opponent.png'),
+	                        scaledSize: new google.maps.Size(52, 52),
+	                        origin: new google.maps.Point(0,0),
+	                        anchor: new google.maps.Point(0, 0)
+	                    });
+	                    user.marker.setMap(this.map);
+	                } else {
+	                    user.marker.setPosition(position);
+	                }
+				}
             });
-        })
+        });
     }
 
     getSpotemon() {
@@ -66,11 +79,12 @@ export default class MapHandler extends Component {
             spotemons.forEach(spotemonJSON => {
                 let position = spotemonJSON.coords;
                 let spotemon = this.spotemon[spotemonJSON.id];
+
                 if (!spotemon) {
                     spotemon = this.spotemon[spotemonJSON.id] = spotemonJSON;
                     spotemon.marker = new google.maps.Marker({ position });
                     spotemon.marker.addListener('click', () => {
-                        browserHistory.push('catch')
+                        browserHistory.push('catch/' + spotemonJSON.id);
                     });
                     spotemon.marker.setIcon({
                         url: require('../../assets/images/artist.png'),
@@ -83,7 +97,7 @@ export default class MapHandler extends Component {
                     spotemon.marker.setPosition(position);
                 }
             });
-        })
+        });
     }
 
     onMapCreated(map) {

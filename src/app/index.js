@@ -6,14 +6,15 @@ import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router';
 import Menu from './components/menu';
 import Challange from './components/challange';
 
-import App from './views/index';
-import Map from './views/map/index';
-import MySpotemon from './views/my-spotemon/index';
-import AllSpotemon from './views/all-spotemon/index';
-import Spotemon from './views/spotemon/index';
-import User from './views/user/index';
-import Spotedex from './views/spotedex/index';
-import Battle from './views/battle/index';
+import App from './views';
+import Map from './views/map';
+import MySpotemon from './views/my-spotemon';
+import AllSpotemon from './views/all-spotemon';
+import Spotemon from './views/spotemon';
+import User from './views/user';
+import Spotedex from './views/spotedex';
+import Battle from './views/battle';
+import Catch from './views/catch';
 
 import style from './views/main.scss';
 
@@ -27,7 +28,8 @@ ReactDOM.render((
 			<Route path="spotemon/:spotemonId" component={Spotemon} />
 			<Route path="user" component={User} />
 			<Route path="spotedex" component={Spotedex} />
-			<Route path="battle" component={Battle} />
+			<Route path="battle/:userId" component={Battle} />
+			<Route path="catch/:spotemonId" component={Catch} />
 		</Route>
 	</Router>
 ), document.getElementById('root'));

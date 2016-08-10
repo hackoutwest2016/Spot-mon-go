@@ -3,14 +3,34 @@ import React, { Component } from 'react';
 import Menu from '../components/menu';
 import Challange from '../components/challange';
 
+import $ from 'jquery';
+import tools from '../modules/tools';
+
 export default class App extends Component {
-  render() {
-    return (
-		<div>
-			<Menu />
-			<Challange />
-		   {this.props.children}
-	   	</div>
-    );
-  }
+	constructor () {
+		super();
+
+		let user = tools.getMyProp();
+
+		if(!user || !user.id || !user.spotemon){
+			user = {
+				id: new Date().getTime(),
+				spotemon: []
+			};
+		}
+
+		global.myself = user;
+
+		tools.saveMySelf();
+	}
+
+  	render() {
+    	return (
+			<div>
+				<Menu />
+				<Challange />
+		   		{this.props.children}
+	   		</div>
+    	);
+  	}
 }
