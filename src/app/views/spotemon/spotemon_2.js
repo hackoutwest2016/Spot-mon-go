@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-function getArtistPopularity (artistId,callback) {
+function getArtist(artistId,callback) {
 	$.ajax({
 		url: 'https://api.spotify.com/v1/artists/' + artistId,
 		success: function (response) {
@@ -46,7 +46,7 @@ function getSongToPlay(trackId, callback){
 }
 
 module.exports = {
-	getArtistPopularity,
+	getArtist,
 	getTrackToPlay,
 	getArtistTopTracks
 }

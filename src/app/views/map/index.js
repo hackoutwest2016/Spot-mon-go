@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 import { MapStyles } from './mapStyles';
+import Tools from '../../modules/tools.js';
 import { browserHistory } from 'react-router';
 import $ from 'jquery';
 
@@ -13,10 +14,10 @@ export default class MapHandler extends Component {
     constructor() {
         super();
 
-        let options = {
-            maximumAge: 0,
-            enableHighAccuracy: true
-        };
+        let options = {};
+        options.maximumAge = 0;
+        //options.enableHighAccuracy = true;
+
         navigator.geolocation.watchPosition(
                 ({coords}) => this.updatePosition(coords),
                 console.error.bind(console),
@@ -29,15 +30,15 @@ export default class MapHandler extends Component {
     }
 
     updatePosition({latitude, longitude}) {
-        let position = {lat: latitude, lng: longitude};
-        this.marker.setPosition(position);
-        this.map.setCenter(position);
+        this.position = {lat: latitude, lng: longitude};
+        this.marker.setPosition(this.position);
+        this.map.setCenter(this.position);
 
 		$.post({
-			url: 'api/users',
+			url: '/api/users',
 			data: {
-				userId: JSON.parse(localStorage.getItem('user')).id,
-				position: JSON.stringify(position)
+				userId: Tools.getMyProp('id'),
+				position: JSON.stringify(this.position)
 			},
 			success: function(response){},
 			error: function(response){console.error(response);}
@@ -45,29 +46,37 @@ export default class MapHandler extends Component {
     }
 
     getOtherPlayers() {
-        $.get('api/users/all', users => {
-            users.forEach(userJSON => {
-				if(myself.id === userJSON.id){
-	                let position = userJSON.coords;
-	                let user = this.users[userJSON.id];
+        $.get('/api/users/all', users => {
+            let toBeRemoved = Object.assign({}, this.users);
+            users.forEach(({id}) => {
+                delete toBeRemoved[id];
+            });
+            Object.keys(toBeRemoved).forEach(id => {
+                toBeRemoved[id].setMap();
+                delete this.users[id];
+            });
 
-	                if (!user) {
-	                    user = this.users[userJSON.id] = userJSON;
-	                    user.marker = new google.maps.Marker({ position });
-	                    user.marker.addListener('click', () => {
-	                        browserHistory.push('battle/' + userJSON.id);
-	                    });
-	                    user.marker.setIcon({
-	                        url: require('../../assets/images/opponent.png'),
-	                        scaledSize: new google.maps.Size(52, 52),
-	                        origin: new google.maps.Point(0,0),
-	                        anchor: new google.maps.Point(0, 0)
-	                    });
-	                    user.marker.setMap(this.map);
-	                } else {
-	                    user.marker.setPosition(position);
-	                }
-				}
+            users.forEach(user => {
+                if (user.id != myself.id) {
+                    if (!this.users[user.id]) {
+                        let position = user.coords;
+                        let map = this.map;
+
+                        let marker = new google.maps.Marker({ position, map });
+                        marker.addListener('click', () => {
+                            browserHistory.push('battle/' + user.id);
+                        });
+                        marker.setIcon({
+                            url: require('../../assets/images/opponent.png'),
+                            scaledSize: new google.maps.Size(52, 52),
+                            origin: new google.maps.Point(0,0),
+                            anchor: new google.maps.Point(0, 0)
+                        });
+                        this.users[user.id] = marker;
+                    } else {
+                        this.users[user.id].setPosition(user.coords);
+                    }
+                }
             });
         });
     }
@@ -75,26 +84,32 @@ export default class MapHandler extends Component {
     getSpotemon() {
         // I know it's called spotemon in plural but that makes it even more
         // difficult to name it in sinular later.
-        $.get('api/spotemon/all', spotemons => {
-            spotemons.forEach(spotemonJSON => {
-                let position = spotemonJSON.coords;
-                let spotemon = this.spotemon[spotemonJSON.id];
+        $.get('/api/spotemon/all', spotemons => {
+            let toBeRemoved = Object.assign({}, this.spotemon);
+            spotemons.forEach(({id}) => {
+                delete toBeRemoved[id];
+            });
+            Object.keys(toBeRemoved).forEach(id => {
+                toBeRemoved[id].setMap();
+                delete this.spotemon[id];
+            });
 
-                if (!spotemon) {
-                    spotemon = this.spotemon[spotemonJSON.id] = spotemonJSON;
-                    spotemon.marker = new google.maps.Marker({ position });
-                    spotemon.marker.addListener('click', () => {
-                        browserHistory.push('catch/' + spotemonJSON.id);
+            spotemons.forEach(spotemon => {
+                if (!this.spotemon[spotemon.id]) {
+                    let position = spotemon.coords;
+                    let map = this.map;
+
+                    let marker = new google.maps.Marker({ position, map });
+                    marker.addListener('click', () => {
+                        browserHistory.push('catch/' + spotemon.spotifyId);
                     });
-                    spotemon.marker.setIcon({
+                    marker.setIcon({
                         url: require('../../assets/images/artist.png'),
                         scaledSize: new google.maps.Size(52, 52),
                         origin: new google.maps.Point(0,0),
                         anchor: new google.maps.Point(0, 0)
                     });
-                    spotemon.marker.setMap(this.map);
-                } else {
-                    spotemon.marker.setPosition(position);
+                    this.spotemon[spotemon.id] = marker;
                 }
             });
         });
@@ -105,6 +120,9 @@ export default class MapHandler extends Component {
         map.setOptions({
             disableDefaultUI: true
         });
+        google.maps.event.addListener(map, 'zoom_changed', () => {
+            this.map.setCenter(this.position);
+        })
     }
 
     saveMarker(ref) {
@@ -123,16 +141,16 @@ export default class MapHandler extends Component {
         return (
             <Gmaps
                 width={'100%'}
-                height={'100%'}
+                height={'calc(100% + 23px)'}
                 lat={coords.lat}
                 lng={coords.lng}
                 mapTypeControl={false}
                 streetViewControl={false}
                 zoomControl={false}
                 draggable={false}
-                zoom={18}
-                maxZoom={18}
-                minZoom={18}
+                zoom={19}
+                maxZoom={19}
+                minZoom={17}
                 clickableIcons={false}
                 styles={MapStyles}
                 onMapCreated={this.onMapCreated.bind(this)}

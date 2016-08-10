@@ -1,0 +1,112 @@
+$hel: Helvetica, sans-serif;
+$helLight: "HelveticaNeue-Light", sans-serif;
+$helMed:"HelveticaNeue-Medium", sans-serif;
+$green: #1ed760;
+$dark-grey: #555555;
+$light-grey: #BEBEBE;
+$yellow: #f6e900;
+$blue: #4c99f9;
+
+html{
+  font-family: $hel;
+  margin:0;
+  padding:0;
+}
+.battle-wrapper{
+  background-color: $light-grey;
+  height:100%;
+
+  .artist{
+  position: absolute;
+
+  .image{
+    border-radius: 50%;
+    overflow:hidden;
+    width:150px;
+    height:150px;
+    margin: 8% 0;
+
+    img{
+      height:100%;
+      position:relative;
+    }
+  }
+}
+
+.header{
+  font-family: $helLight;
+  font-weight: 100;
+  color: $light-grey;
+  padding: 5% 0;
+  text-align: center;
+
+  .leftPlayerBar{
+    position:relative;
+    margin: 0 5%;
+    width:40%;
+    text-align:left;
+    display:inline-block;
+  }
+
+  .rightPlayerBar{
+    position:relative;
+    margin: 0 4%;
+    width:40%;
+    text-align:right;
+    display:inline-block;
+  }
+
+}
+
+.name{
+  font-family: $helMed;
+  color: $green;
+  font-weight: 50;
+  font-size: 10pt;
+}
+.cp-text{
+  font-family:$helLight;
+  letter-spacing: 1px;
+  font-weight:100;
+  color: $yellow;
+  font-size: 10pt;
+  display:inline-block;
+  margin-right:5px;
+}
+.cp-points{
+  color: $light-grey;
+  font-size: 15pt;
+  display:inline-block;
+}
+
+.battle-stage{
+  position: absolute;
+
+  img{
+    width:100%
+  }
+}
+.stage1{
+  top:0;
+  left:0;
+}
+.stage2{
+  bottom:0;
+  right:0;
+}
+
+.rightPlayer{
+  top:15%;
+  right:3%;
+}
+.leftPlayer{
+  bottom:10%;
+  left:3%;
+
+  .tap-text{
+    color:$light-grey;
+    font-weight: lighter;
+  }
+}
+
+}

@@ -12,8 +12,9 @@ html{
   padding:0;
 }
 
-.wrapper{background-color: $dark-grey;}
-
+#myspotemon{
+  background-color: $dark-grey;
+  text-align: center;
 .header{
   font-family: $helLight;
   font-weight: 100;
@@ -68,4 +69,5 @@ html{
     font-weight: 50;
     font-size: 10pt;
   }
+}
 }

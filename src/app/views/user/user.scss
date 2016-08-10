@@ -11,13 +11,24 @@ html{
   margin:0;
   padding:0;
 }
-.wrapper{background-color: $dark-grey;}
-
-body {
-	color: rgb(55,55,55);
-	font: 100% Helvetica, sans-serif;
+.wrapp{background-color: $dark-grey;
+  height: 100%;
 }
 
+body {
+
+	color:$dark-grey;
+	font: 100% Helvetica, sans-serif;
+
+}
+div#top{
+	text-align: center;
+	img {
+		width: 30vh;
+		height: auto;
+		position: relative;
+		}
+	}
 div#user{
 	margin-left: 8pt;
 	.name{
@@ -29,7 +40,7 @@ div#user{
   	}
   	.userName{
   		font-family: $helMed;
-	    color: $dark-grey;
+	    color: $light-grey;
 	    font-weight: 50;
 	    font-size: 15pt;
 	    display: inline-block;
@@ -44,7 +55,7 @@ div#user{
   	}
   	.recordLabelName{
   		font-family: $helMed;
-	    color: $dark-grey;
+	    color: $light-grey;
 	    font-weight: 50;
 	    font-size: 15pt;
 	    display: inline-block;
@@ -59,18 +70,12 @@ div#user{
   	}
   	.spotemonData{
   		font-family: $helMed;
-	    color: $dark-grey;
+	    color: $light-grey;
 	    font-weight: 50;
 	    font-size: 15pt;
 	    display: inline-block;
 	    margin-left: 5pt;
   	}
-  	img {
-		border-radius:50%;
-		width: 25vh;
-		height: auto;
-		margin-left: 46pt;
-		position: relative;
-	}
-	
+  	
+
 }
