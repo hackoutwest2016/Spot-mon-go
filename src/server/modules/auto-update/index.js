@@ -7,14 +7,14 @@ function generateSpotemon(userIndex = 0) {
     let userList = users.getAllUsers();
     if (userList.length) {
         let coords = userList[userIndex % userList.length].coords;
-		coords.lat = coords.lat + (2*Math.random() - 1)*0.0002;
+		coords.lat = coords.lat + (Math.random())*0.0002;
 		coords.lng = coords.lng + (2*Math.random() - 1)*0.0002;
 
         generateSpotemonAtCoordinates(coords);
     }
     setTimeout(() => {
         generateSpotemon(userIndex + 1);
-	}, 30000);
+	}, 25000);
 }
 
 function generateSpotemonAtCoordinates(coordinates) {
