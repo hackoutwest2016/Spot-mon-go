@@ -12,9 +12,25 @@ html{
   margin:0;
   padding:0;
 }
-.wrapper{
+.battle-wrapper{
   background-color: $light-grey;
   height:100%;
+
+  .artist{
+  position: absolute;
+
+  .image{
+    border-radius: 50%;
+    overflow:hidden;
+    width:150px;
+    height:150px;
+    margin: 8% 0;
+
+    img{
+      height:100%;
+      position:relative;
+    }
+  }
 }
 
 .header{
@@ -90,22 +106,6 @@ html{
   .tap-text{
     color:$light-grey;
     font-weight: lighter;
-  }
-}
-
-.artist{
-  position: absolute;
-
-  .image{
-  border-radius: 50%;
-  overflow:hidden;
-  width:150px;
-  height:150px;
-  margin: 8% 0;
-
-  img{
-    height:100%;
-    position:relative;
   }
 }
 
