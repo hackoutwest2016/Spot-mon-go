@@ -20,7 +20,7 @@ body {
 }
 
 div#spotemon {
-	margin-left: 100pt;
+	margin-left: 30pt;
 	.cp-text{
 		font-family: $helLight;
 		letter-spacing: 1px;
@@ -41,7 +41,8 @@ div#spotemon {
 	}
 	#results{
 		position: relative;
-		top: -120px;
+		margin-left: 20pt;
+		top: -50px;
 		.name{
 		    font-family: $helMed;
 		    color: $green;
@@ -66,9 +67,9 @@ div#spotemon {
 	    width:150px;
 	    height:150px;
 	    margin: 8% 0;
-	    margin-left: 55pt;
+	    margin-left: 53pt;
 	    position: relative;
-	    top: -85px;
+	    top: -50px;
 
 	    img{
 	      height:100%;

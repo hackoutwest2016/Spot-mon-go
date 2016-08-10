@@ -7,9 +7,13 @@ export default class User extends Component {
   	render() {
     	return (
     		<div className ="wrapp">
-				<div id = "user">
-	    			<img src = {require('../../assets/images/avatar.png')} alt = "User Icon" /> 
-					<hr/>
+					<div id = "top">
+
+		    			<img src = {require('../../assets/images/avatar.png')} alt = "User Icon" /> 
+						<hr/>
+					</div>
+					<div id = "user">
+
 					<div className = "name">Name: </div>
 					<div className = "userName"> {this.state.initialized ? this.state.userName : 'Loading'}</div>
 					<br/>

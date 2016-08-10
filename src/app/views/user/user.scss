@@ -19,11 +19,18 @@ body {
 
 	color:$dark-grey;
 	font: 100% Helvetica, sans-serif;
-}
 
+}
+div#top{
+	text-align: center;
+	img {
+		width: 30vh;
+		height: auto;
+		position: relative;
+		}
+	}
 div#user{
 	margin-left: 8pt;
-
 	.name{
 	    font-family: $helMed;
 	    color: $green;
@@ -69,11 +76,6 @@ div#user{
 	    display: inline-block;
 	    margin-left: 5pt;
   	}
-  	img {
-		width: 30vh;
-		height: auto;
-		margin-left: 46pt;
-		position: relative;
-	}
+  	
 
 }
