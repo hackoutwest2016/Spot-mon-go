@@ -28,8 +28,8 @@ ReactDOM.render((
 			<Route path="spotemon/:spotemonId" component={Spotemon} />
 			<Route path="user" component={User} />
 			<Route path="spotedex" component={Spotedex} />
-			<Route path="battle" component={Battle} />
-			<Route path="catch" component={Catch} />
+			<Route path="battle/:userId" component={Battle} />
+			<Route path="catch/:spotemonId" component={Catch} />
 		</Route>
 	</Router>
 ), document.getElementById('root'));

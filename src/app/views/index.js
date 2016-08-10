@@ -4,20 +4,24 @@ import Menu from '../components/menu';
 import Challange from '../components/challange';
 
 import $ from 'jquery';
+import tools from '../modules/tools';
 
 export default class App extends Component {
 	constructor () {
 		super();
 
-		const user = localStorage.getItem('user');
+		let user = tools.getMyProp();
 
-		if(!user){
-			const id = new Date().getTime();
-
-			localStorage.setItem('user', JSON.stringify({id}));
+		if(!user || !user.id || !user.spotemon){
+			user = {
+				id: new Date().getTime(),
+				spotemon: []
+			};
 		}
 
-		global.myself = JSON.parse(localStorage.getItem('user'));
+		global.myself = user;
+
+		tools.saveMySelf();
 	}
 
   	render() {
