@@ -14,10 +14,10 @@ export default class MapHandler extends Component {
     constructor() {
         super();
 
-        let options = {
-            maximumAge: 0,
-            enableHighAccuracy: true
-        };
+        let options = {};
+        options.maximumAge = 0;
+        //options.enableHighAccuracy = true;
+
         navigator.geolocation.watchPosition(
                 ({coords}) => this.updatePosition(coords),
                 console.error.bind(console),
