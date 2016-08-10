@@ -14,7 +14,9 @@ html{
 
 #myspotemon{
   background-color: $dark-grey;
+
   text-align: center;
+  padding-bottom: 5pt;
 .header{
   font-family: $helLight;
   font-weight: 100;
@@ -36,6 +38,11 @@ html{
   display:inline-block;
   margin: 0 5%;
   text-align:center;
+
+  a {
+    display: block;
+  }
+
   .cp-text{
     font-family:$helLight;
     letter-spacing: 1px;
@@ -50,6 +57,7 @@ html{
     font-size: 15pt;
     display:inline-block;
   }
+
   .image{
     border-radius: 50%;
     overflow:hidden;
