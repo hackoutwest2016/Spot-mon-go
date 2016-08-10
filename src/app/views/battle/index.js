@@ -77,9 +77,7 @@ export default class Battle extends Component {
 
     click () {
       var self = this;
-      console.log("click");
-      var damage = (self.state.mySpotemon.cp/100)*6;
-      console.log("damage: " + damage);
+      var damage = (self.state.mySpotemon.cp/100)*8;
       var health = self.state.opponentSpotemon.health;
       var name = self.state.opponentSpotemon.name;
       var cp = self.state.opponentSpotemon.cp;
@@ -88,7 +86,7 @@ export default class Battle extends Component {
       if(health>=0){
         health = self.state.opponentSpotemon.health-damage/100;
 
-        console.log("health: " + health);
+        //console.log("health: " + health);
         self.setState(Object.assign({}, self.state, {
           opponentSpotemon: {
             name: name,
@@ -117,8 +115,8 @@ export default class Battle extends Component {
       else{
         console.log('win!');
         browserHistory.push('/win');
-        //route to win view
-        //interrupts opponent
+
+        //interrupt opponent
       }
     }
 
@@ -127,7 +125,7 @@ export default class Battle extends Component {
         <div className="battle-wrapper">
 
           <div className="battle-stage stage1"><img src={require('../../assets/images/battlestage1.png')}/></div>
-          <div className="battle-stage stage2"><img src={require('../../assets/images/battlestage2.png')}/></div>
+          <div onClick={this.click} className="battle-stage stage2"><img src={require('../../assets/images/battlestage2.png')}/></div>
 
           <div className="header">
             <div className="leftPlayerBar">
@@ -148,10 +146,9 @@ export default class Battle extends Component {
             <div className="image"><img src={this.state.opponentSpotemon.image}/></div>
           </div>
 
-          <div onClick={this.click} className="artist leftPlayer">
+          <div className="artist leftPlayer">
             <div className="image">
-              <img src={this.state.mySpotemon.image}/>
-              <div className="note"><img src={require('../../assets/images/note.png')}/></div>
+              <img onClick={this.click} src={this.state.mySpotemon.image}/>
             </div>
             <div className="tap-text">Tap to perform!</div>
           </div>

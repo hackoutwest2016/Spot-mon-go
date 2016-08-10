@@ -63,9 +63,9 @@ export default class MapHandler extends Component {
                         let map = this.map;
 
                         let marker = new google.maps.Marker({ position, map });
-                        marker.addListener('click', () => {
+                        /*marker.addListener('click', () => {
                             browserHistory.push('battle/' + user.id);
-                        });
+                        });*/
                         marker.setIcon({
                             url: require('../../assets/images/opponent.png'),
                             scaledSize: new google.maps.Size(52, 52),

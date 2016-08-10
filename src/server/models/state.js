@@ -19,6 +19,7 @@ if(!global.state){
             "0cAOG10Gh3ORpBRZ9c7Zam",
             "33zLgL7tT1vg7eRpWYX5uI",
             "6xrCU6zdcSTsG2hLrojpmI",
+<<<<<<< HEAD
 			"3fA5zBQWEa0uzYo43SvXaj",
 			"6R21HSNyo7HVac8pyqY3T2",
 			"6zFYqv1mOsgBRQbae3JJ9e",
@@ -66,6 +67,9 @@ if(!global.state){
 			"20nKo8C8M0JpIznby9Dv5p",
 			"7rZYHhxGKbe1XepzlpDlKm",
 			"3uFum0NCM1PtmCO0MwsOAt"
+=======
+            "3KqfgW7Ha0DNBnrPRpkhbE"
+>>>>>>> 3868bec295a9ce4670365fe9e02d7a7258d87b94
         ],
 		"activeChallanges": [
 			{
