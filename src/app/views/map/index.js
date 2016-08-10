@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Gmaps, Marker, InfoWindow, Circle} from 'react-gmaps';
 import { MapStyles } from './mapStyles';
+import Tools from '../../modules/tools.js';
 import { browserHistory } from 'react-router';
 import $ from 'jquery';
 
@@ -36,7 +37,7 @@ export default class MapHandler extends Component {
 		$.post({
 			url: 'api/users',
 			data: {
-				userId: JSON.parse(localStorage.getItem('user')).id,
+				userId: Tools.getMyProp('id'),
 				position: JSON.stringify(position)
 			},
 			success: function(response){},
@@ -76,25 +77,31 @@ export default class MapHandler extends Component {
         // I know it's called spotemon in plural but that makes it even more
         // difficult to name it in sinular later.
         $.get('api/spotemon/all', spotemons => {
-            spotemons.forEach(spotemonJSON => {
-                let position = spotemonJSON.coords;
-                let spotemon = this.spotemon[spotemonJSON.id];
+            let toBeRemoved = Object.assign({}, this.spotemon);
+            spotemons.forEach(({id}) => {
+                delete toBeRemoved[id];
+            });
+            Object.keys(toBeRemoved).forEach(id => {
+                toBeRemoved[id].setMap();
+                delete this.spotemon[id];
+            });
 
-                if (!spotemon) {
-                    spotemon = this.spotemon[spotemonJSON.id] = spotemonJSON;
-                    spotemon.marker = new google.maps.Marker({ position });
-                    spotemon.marker.addListener('click', () => {
-                        browserHistory.push('catch/' + spotemonJSON.id);
+            spotemons.forEach(spotemon => {
+                if (!this.spotemon[spotemon.id]) {
+                    let position = spotemon.coords;
+                    let map = this.map;
+
+                    let marker = new google.maps.Marker({ position, map });
+                    marker.addListener('click', () => {
+                        browserHistory.push('catch/' + spotemon.spotifyId);
                     });
-                    spotemon.marker.setIcon({
+                    marker.setIcon({
                         url: require('../../assets/images/artist.png'),
                         scaledSize: new google.maps.Size(52, 52),
                         origin: new google.maps.Point(0,0),
                         anchor: new google.maps.Point(0, 0)
                     });
-                    spotemon.marker.setMap(this.map);
-                } else {
-                    spotemon.marker.setPosition(position);
+                    this.spotemon[spotemon.id] = marker;
                 }
             });
         });
