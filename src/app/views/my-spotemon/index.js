@@ -19,7 +19,7 @@ export default class MySpotemon extends Component {
       })
 
     	return (
-			<div className="wrapper">
+			<div id="myspotemon" className="wrapper">
         <div className="header">
   				<h1>MY SPOTÉMON</h1>
           <div>87/143</div>

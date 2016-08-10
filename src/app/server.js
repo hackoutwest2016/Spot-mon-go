@@ -7,7 +7,8 @@ new WebpackDevServer(webpack(config), {
 	hot: true,
 	historyApiFallback: true,
 	proxy: {
-		"/api/*": "http://localhost:3001"
+		"/api/*": "http://localhost:3001",
+		"/socket.io/*": "http://localhost:3001",
 	}
 }).listen(3000, 'localhost', function (err, result) {
 	if (err) {

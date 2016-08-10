@@ -37,4 +37,8 @@ router.route('/spotemon/close').get(function(req, res){ //Get close spotemon
 	res.json(spotemon.getCloseSpotemon(exampleUser));
 });
 
+router.route('/challanges').get(function(req, res){
+	res.json(state.activeChallanges);
+});
+
 module.exports = router;
