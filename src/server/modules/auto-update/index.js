@@ -14,7 +14,7 @@ function generateSpotemon(userIndex = 0) {
     }
     setTimeout(() => {
         generateSpotemon(userIndex + 1);
-	}, Math.floor(30000 / state.users.length));
+	}, Math.floor(60000 / state.users.length));
 }
 
 function generateSpotemonAtCoordinates(coordinates) {
@@ -27,6 +27,6 @@ function generateSpotemonAtCoordinates(coordinates) {
     };
     setTimeout(() => {
         spotemon.removeSpotemon(newSpotemon);
-    }, 120000);
+    }, 120000 / state.users.length);
     spotemon.addSpotemon(newSpotemon);
 }
